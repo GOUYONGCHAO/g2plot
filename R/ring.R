@@ -220,8 +220,8 @@ ring <- function(
     , width = NULL
     , height = NULL
     , radius = NULL
-    ,innerRadius=NULL
-    ,statistic=NULL
+    , innerRadius = NULL
+    , statistic = NULL
     , forceFit = TRUE
     , padding = NULL
     , tooltip = NULL
@@ -254,8 +254,8 @@ ring <- function(
       angleField = angleField
       , colorField = colorField
       , radius = radius
-      ,innerRadius=innerRadius
-      ,color=color
+      , innerRadius = innerRadius
+      , color = color
       ,
       , title = title
       , description = description

@@ -162,7 +162,6 @@ radar <- function(
     , radius = NULL
     ,seriesField=NULL
     ,angleAxis=NULL
-    , angleField = NULL
     ,line=NULL
     ,area=NULL
     ,points=NULL

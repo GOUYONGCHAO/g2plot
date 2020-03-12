@@ -110,8 +110,8 @@ bubble <- function(
     , xField = NULL
     , yField = NULL
     , colorField = NULL
-    ,sizeField=NULL
-    ,pointSize=
+    , sizeField = NULL
+    , pointSize = NULL
     , title = ''
     , description = ''
     , width = NULL
@@ -151,8 +151,8 @@ bubble <- function(
       xField = xField
       , yField = yField
       , colorField = colorField
-      , sizeField= sizeField
-      , pointSize= pointSize
+      , sizeField = sizeField
+      , pointSize = pointSize
       , color = color
       , title = title
       , description = description
