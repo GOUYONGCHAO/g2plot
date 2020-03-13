@@ -1,7 +1,8 @@
 
 #'' options
 #''
-#'' @import htmlwidgets
+#'' @import htmlwidgets magrittr
+#'  @export %>%
 #'' @param  title
 
 #' optional, object 类型
@@ -130,7 +131,7 @@
 #' offsetY: number     图例在 position 的基础上再往 y 方向偏移量，单位 px
 #' marker: string 图例 marker，默认为 'circle'
 
-#' 图例 marker 内置有：circle,square,diamond,triangle,triangleDown,hexagon,bowtie,cross,tick,plus,hyphen,line,hollowCircle,hollowSquare,hollowDiamond,hollowTriangle,hollowTriangleDown,hollowHexagon,hollowBowtie
+#' 图例 marker 内置有：circle,square,diamond,trianguideLinee,trianguideLineeDown,hexagon,bowtie,cross,tick,plus,hyphen,line,hollowCircle,hollowSquare,hollowDiamond,hollowTrianguideLinee,hollowTrianguideLineeDown,hollowHexagon,hollowBowtie
 #' @param axis
 
 #' optional
@@ -445,3 +446,217 @@
 #' @param getPlotTheme()
 
 #' 获取图表 theme。
+
+#' @param align 'start', 'middle', 'end'
+#' @param baseline 'top', 'middle', 'bottom'
+#' @param fill   'black' or #000000
+#' @param fontSize  '12'
+#' @param fontWeight 'bold'
+
+
+#' @export g2title
+g2title <- function(g2Htmlwidget  
+, title = ''
+, align = c('start', 'center', 'end')
+, baseline = c('top', 'middle', 'bottom')
+, fill = '#404040'
+, fontSize = '12'
+, fontWeight = 'bold'
+) {
+  if (!is.character(title)) {
+    title <- as.character(title)
+  }
+  if (length(title) == 0) titleVisible = FALSE
+  else titleVisible <- TRUE
+  if (!is.null(align)) align <- 'center'
+  align <- match.arg(align)
+  if (!is.null(baseline)) baseline <- 'middle'
+  baseline <- match.arg(baseline)
+  #   fill <- '#404040'
+  #   fontSize <- '12'
+  #   fontWeight <- 'bold'
+  style <- list(align = align, baseline = baseline, fill = fill, fontSize = fontSize, fontWeight = fontWeight)
+  title <- list(text = title, titleVisible = titleVisible, style = style)
+  g2Htmlwidget$x$attrs$title <- mergeLists(g2Htmlwidget$x$attrs$title, title)
+  g2Htmlwidget
+}
+
+
+#' @export g2desc
+g2desc <- function(g2Htmlwidget
+, description = ''
+, align = c('start', 'center', 'end')
+, baseline = c('top', 'middle', 'bottom')
+, fill = '#404040'
+, fontSize = '12'
+, fontWeight = 'bold'
+) {
+  if (!is.character(description)) {
+    title <- as.character(description)
+  }
+  if (length(description) == 0) descVisible = FALSE
+  else descVisible <- TRUE
+  if (!is.null(align)) align <- 'center'
+  align <- match.arg(align)
+  if (!is.null(baseline)) baseline <- 'middle'
+  baseline <- match.arg(baseline)
+
+  #   fill <- '#404040'
+  #   fontSize <- '12'
+  #   fontWeight <- 'bold'
+  style <- list(align = align, baseline = baseline, fill = fill, fontSize = fontSize, fontWeight = fontWeight)
+  description <- list(text = description, descVisible = descVisible, style = style)
+  g2Htmlwidget$x$attrs$description <- mergeLists(g2Htmlwidget$x$attrs$description, description)
+  g2Htmlwidget
+}
+
+
+
+
+# optional, object 类型
+
+#'@param visible: boolean  图例是否可见
+#'@param position: string 图例位置，以十二方位布局
+# 设置图例的显示位置，可设置的值为 12 个：left-top,left-center,left-bottom,right-top,right-center,right-bottom,top-left,top-center,top-right,bottom-left,bottom-center,bottom-right。
+#'@param formatter: function  对图例的显示信息进行格式化
+#'@param offsetX: number    图例在 position 的基础上再往 x 方向偏移量，单位 px
+#'@param offsetY: number     图例在 position 的基础上再往 y 方向偏移量，单位 px
+#'@param marker: string 图例 marker，默认为 'circle'
+
+# 图例 marker 内置有：circle,square,diamond,trianguideLinee,trianguideLineeDown,hexagon,bowtie,cross,tick,plus,hyphen,line,hollowCircle,hollowSquare,hollowDiamond,hollowTrianguideLinee,hollowTrianguideLineeDown,hollowHexagon,hollowBowtie
+
+#' @export g2legend
+
+
+g2legend <- function(g2Htmlwidget
+    , visible = TRUE
+    , position = c('left-top', 'left-center', 'left-bottom', 'right-top', 'right-center', 'right-bottom', 'top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right')
+    , marker = c('circle', 'square', 'diamond', 'trianguideLinee', 'trianguideLineeDown', 'hexagon', 'bowtie', 'cross', 'tick', 'plus', 'hyphen', 'line', 'hollowCircle', 'hollowSquare', 'hollowDiamond', 'hollowTrianguideLinee', 'hollowTrianguideLineeDown', 'hollowHexagon', 'hollowBowti')
+    , offsetX = 0
+    , offsetY = 0
+) {
+  if (is.null(marker)) marker <- 'circle'
+  marker <- match.arg(marker)
+  if (is.null(position)) position <- 'right-center'
+  position <- match.arg(position)
+  legend <- list(visible = visible, position = position, marker = marker, offsetX = offsetX, offsetY = offsetY)
+  g2Htmlwidget$x$attrs$legend <- mergeLists(g2Htmlwidget$x$attrs$legend, legend)
+  g2Htmlwidget
+}
+
+
+
+
+#'@export guideLine
+
+# optional, object[] 类型
+
+# 辅助线，适用于所有直角坐标系的图表，例如折线图、柱状图、面积图、散点图等，而不适用于极坐标的图表，如饼图、环图、雷达图等。
+
+# 支持同时添加多条辅助线。
+
+#'@param type: string    含有统计意义的辅助线类型，可选类型为  'max' | 'min' | 'median' |  'mean'。
+
+# 如指定了辅助线类型，则不需要配置辅助线的start和end。
+#'@param  start: array | function | object  指定辅助线起始位置，如不配置type，则该辅助线为自定义辅助线，start是必选项。
+
+# 支持两种数据形式，两者不能混用：
+
+# 原始数据值，如 ['2010-01-01', 100]
+# 绘图区域百分比位置，如 ['50%', '50%']
+
+#'@param end: array | function | object  指定辅助线终点位置，如不配置type，则该辅助线为自定义辅助线，end是必选项。
+# 支持两种数据形式，两者不能混用：
+# 原始数据值，如 ['2010-01-01', 100]
+# 绘图区域百分比位置，如 ['50%', '50%']
+
+#'@param  lineStyle: object    设置辅助线样式。
+
+# stroke: string    辅助线颜色
+# lineWidth: number  辅助线宽度
+# lineDash: number[]    辅助线虚线显示
+# opacity: number    辅助线透明度
+
+#'@param  text: object  设置辅助线文本。
+# position: 'start' | 'center' | 'end' | '50%' | 0.5  设置辅助线文本样式。
+# content: string    辅助线文本内容。
+# offsetX: number  辅助线文本位置在 x 方向上的偏移量。
+# offsetY: number  辅助线文本位置在 y 方向上的偏移量。
+# style: object    辅助线文本样式。
+#   fontSize: number    字号
+#   fill: string    文字颜色
+#   opacity: number  文字透明度
+#   textAlign: 'start' | 'end' | 'center'    对齐方式
+#   textBaselin: 'top' | 'bottom' | 'middle'  文字基线
+#' @export g2guidline
+g2guideLine <- function(g2Htmlwidget
+    , type = c('max', 'min', 'median', 'mean')
+    , start = c(50, 50)
+    , end = c(100, 100)
+    , lineColor = 'red'
+    , lineWidth = 2
+    , lineDash = c(2,4)
+    , lineOpacity = 1
+    , text = NULL
+    , textPosition = NULL
+    , offsetX = 0
+    , offsetY = 0
+    , fontSize = 12
+    , fill = 'black'
+    , textOpacity = 100
+    , textAlign = c( 'start', 'end', "center" )
+    , textBaselin = c('top', 'bottom', 'middle')
+  ) {
+
+  if (g2Htmlwidget$elementId %in% c('line', 'bar', 'area', 'scatter')) {
+    if (!is.null(type)) {
+      type <- match.arg(type)
+      lineStyle <- list(stroke = lineColor, lineWidth = lineWidth, lineDash = lineDash, opacity = lineOpacity)
+      if (is.null(textAlign)) textAlign <- "center"
+      textAlign <- match.arg(textAlign)
+      if (is.null(textBaselin)) textBaselin <- 'middle'
+      textBaselin <- match.arg(textBaselin)
+      text <- list(position = textPosition
+    , content = text
+    , offsetX = offsetX
+    , offsetY = offsetY
+    , style = list(fontSize = fontSize
+        , fill = fill
+        , opacity = textOpacity
+        , textAlign = textAlign
+        , textBaselin = textBaselin)
+    )
+      guideLine <- list(type = type,lineStyle = lineStyle, text = text)
+
+    }
+    else {
+      lineStyle <- list(stroke = lineColor, lineWidth = lineWidth, lineDash = lineDash, opacity = lineOpacity)
+      if (is.null(textAlign)) textAlign <- "center"
+      textAlign <- match.arg(textAlign)
+      if (is.null(textBaselin)) textBaselin <- 'middle'
+      textBaselin <- match.arg(textBaselin)
+      text <- list(position = textPosition
+    , content = text
+    , offsetX = offsetX
+    , offsetY = offsetY
+    , style = list(fontSize = fontSize
+        , fill = fill
+        , opacity = textOpacity
+        , textAlign = textAlign
+        , textBaselin = textBaselin)
+    )
+      guideLine <- list(start = start, end = end, lineStyle = lineStyle, text = text)
+    }
+    
+    gls <- list(guideLine = guideLine)
+    if (length(names(g2Htmlwidget$x$attrs$gls)) == 0) {
+      g2Htmlwidget$x$attrs$gls <- gls
+    }
+    else {
+      names(gls) <- paste('guideLine', length(names(g2Htmlwidget$x$gls)) + 1, sep = '')
+      g2Htmlwidget$x$attrs$gls <- mergeLists(g2Htmlwidget$x$attrs$gls, gls)
+    }
+    g2Htmlwidget
+  }
+  else stop('guideLine only support "line","bar","area","scatter"! ')
+}

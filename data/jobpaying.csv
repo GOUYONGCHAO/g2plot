@@ -1,4 +1,4 @@
-rank,code,prob,Average_annual_wage,education,occupation,short occupation,len,probability,numbEmployed,median_ann_wage,employed_may2016,average_ann_wage
+rank,code,prob,Average annual wage,education,occupation,short occupation,len,probability,numbEmployed,median_ann_wage,employed_may2016,average_ann_wage
 1,29-1125,0.0028,48190,Bachelor's degree,Recreational Therapists,Recreational Therapists,23,0.0028,18100,46410,"18100,",48190
 2,49-1011,0.003,66730,High school diploma or equivalent,"First-Line Supervisors of Mechanics, Installers and Repairers","First-Line Supervisors of Mechanics, Installers and Repairers",61,0.003,453330,63540,"453330,",66730
 3,11-9161,0.003,78060,Bachelor's degree,Emergency Management Directors,Emergency Management Directors,30,0.003,9570,70500,"9570,",78060

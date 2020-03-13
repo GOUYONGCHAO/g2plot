@@ -8,7 +8,7 @@ HTMLWidgets.widget({
 
     // TODO: define shared variables for this instance
     const container = document.getElementById(el.id);
-    const thiz=this;
+    const thiz = this;
     return {
 
       renderValue: function (x) {
@@ -19,41 +19,74 @@ HTMLWidgets.widget({
         const data = HTMLWidgets.dataframeToD3(x.data);
         //fetch attributions
         const attrs = x.attrs;
+        // var title={};
+        if (x.attrs.title.style)
+          title = {
+            visible: x.attrs.title.titleVisible,
+            text: x.attrs.title.text,
+            style: {
+              align: x.attrs.title.style.align
+              , baseline: x.attrs.title.style.baseline
+              , fill: x.attrs.title.style.fill
+              , fontSize: x.attrs.title.style.fontSize
+              , fontWeight: x.attrs.title.style.fontWeight
+            }
+          }
+        else
+          title = {
+            visible: x.attrs.title.titleVisible,
+            text: x.attrs.title.text
+          };
+        // var description={};
+        if (x.attrs.description.style) description = {
+          visible: attrs.description.descVisible,
+          text: attrs.description.text,
+          style: {
+            align: attrs.description.style.align
+            , baseline: attrs.description.style.baseline
+            , fill: attrs.description.style.fill
+            , fontSize: attrs.description.style.fontSize
+            , fontWeight: attrs.description.style.fontWeight
+          }
+        }
+        else
+          description = {
+            visible: attrs.description.descVisible,
+            text: attrs.description.text,
+          };
+        // legend
+        if (x.attrs.legend.visible==true || x.attrs.legend.visible==null) legend =x.attrs.legend
+        else legend = {
+          visible: false,
+        };
+        // guideline
+        var gls = [];
+        for(let i in x.attrs.gls){
+          let o = {};
+          o = x.attrs.gls[i];
+          gls.push(o)
+        };
+       
 
         plot = new G2Plot.Line(container, {
           data,
           xField: attrs.xField,
           yField: attrs.yField,
           seriesField: attrs.seriesField,
-          title: {
-            visible: attrs.title.titleVisible,
-            text: attrs.title.text,
-          },
-          description: {
-            visible: attrs.description.descVisible,
-            text: attrs.description.text,
-          },
+          title,
+          description,
+          legend,
+          guideLine:gls,
           point: {
             visible: attrs.point,
           },
           label: {
             visible: false,
           },
-          legend: {
-            visible: true,
-            position: 'right-top',
-          },
-          
         });
-
         // render plot
-        plot.render(); 
-
+        plot.render();
       },
-
-
-      
-
       resize: function (width, height) {
 
         // TODO: code to re-render the widget with a new size

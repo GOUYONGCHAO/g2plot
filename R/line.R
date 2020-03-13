@@ -1,6 +1,7 @@
 #' line 
 #'
-#' @import htmlwidgets
+#' @import htmlwidgets magrittr
+#' @export %>%
 #' @param  title
 
 # optional 见通用图表配置。
@@ -140,7 +141,7 @@ line <- function(
     , xAxis = NULL
     , yAxis = NULL
     , tooltip = NULL
-    , legend = NULL
+    , legend = TRUE
     , label = NULL
     , theme = NULL
     , events = NULL
@@ -164,6 +165,7 @@ line <- function(
   # forward options using x
   title <- list(text = title, titleVisible = titleVisible)
   description <- list(text = description, descVisible = descVisible)
+  legend <- list(visible=legend)
 
   attrs <- list(
       xField = xField
@@ -172,6 +174,7 @@ line <- function(
       , title = title
       , description = description
       , point = point
+      , legend = legend
   )
   # create widget
   g2Htmlwidget <- htmlwidgets::createWidget(
@@ -180,13 +183,13 @@ line <- function(
     width = width,
     height = height,
     package = 'g2plot',
-    # htmlwidgets::sizingPolicy(viewer.suppress = TRUE
-    #                         , browser.fill = TRUE
-    #                         , browser.padding = 75
-    #                         , knitr.figure = FALSE
-    #                         , knitr.defaultWidth = 600
-    #                         , knitr.defaultHeight = 400),
-    elementId = elementId
+  # htmlwidgets::sizingPolicy(viewer.suppress = TRUE
+  #                         , browser.fill = TRUE
+  #                         , browser.padding = 75
+  #                         , knitr.figure = FALSE
+  #                         , knitr.defaultWidth = 600
+  #                         , knitr.defaultHeight = 400),
+    elementId = 'line'
   )
   g2Htmlwidget
 }
