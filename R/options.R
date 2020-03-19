@@ -455,7 +455,7 @@
 
 
 #' @export g2title
-g2title <- function(g2Htmlwidget  
+g2title <- function(g2Htmlwidget
 , title = ''
 , align = c('start', 'center', 'end')
 , baseline = c('top', 'middle', 'bottom')
@@ -534,12 +534,13 @@ g2legend <- function(g2Htmlwidget
     , marker = c('circle', 'square', 'diamond', 'trianguideLinee', 'trianguideLineeDown', 'hexagon', 'bowtie', 'cross', 'tick', 'plus', 'hyphen', 'line', 'hollowCircle', 'hollowSquare', 'hollowDiamond', 'hollowTrianguideLinee', 'hollowTrianguideLineeDown', 'hollowHexagon', 'hollowBowti')
     , offsetX = 0
     , offsetY = 0
+    ,flipPage=TRUE
 ) {
   if (is.null(marker)) marker <- 'circle'
   marker <- match.arg(marker)
   if (is.null(position)) position <- 'right-center'
   position <- match.arg(position)
-  legend <- list(visible = visible, position = position, marker = marker, offsetX = offsetX, offsetY = offsetY)
+  legend <- list(visible = visible, position = position, marker = marker, offsetX = offsetX, offsetY = offsetY,flipPage=flipPage)
   g2Htmlwidget$x$attrs$legend <- mergeLists(g2Htmlwidget$x$attrs$legend, legend)
   g2Htmlwidget
 }
@@ -595,7 +596,7 @@ g2guideLine <- function(g2Htmlwidget
     , end = c(100, 100)
     , lineColor = 'red'
     , lineWidth = 2
-    , lineDash = c(2,4)
+    , lineDash = c(2, 4)
     , lineOpacity = 1
     , text = NULL
     , textPosition = NULL
@@ -604,7 +605,7 @@ g2guideLine <- function(g2Htmlwidget
     , fontSize = 12
     , fill = 'black'
     , textOpacity = 100
-    , textAlign = c( 'start', 'end', "center" )
+    , textAlign = c('start', 'end', "center")
     , textBaselin = c('top', 'bottom', 'middle')
   ) {
 
@@ -626,7 +627,7 @@ g2guideLine <- function(g2Htmlwidget
         , textAlign = textAlign
         , textBaselin = textBaselin)
     )
-      guideLine <- list(type = type,lineStyle = lineStyle, text = text)
+      guideLine <- list(type = type, lineStyle = lineStyle, text = text)
 
     }
     else {
@@ -647,7 +648,7 @@ g2guideLine <- function(g2Htmlwidget
     )
       guideLine <- list(start = start, end = end, lineStyle = lineStyle, text = text)
     }
-    
+
     gls <- list(guideLine = guideLine)
     if (length(names(g2Htmlwidget$x$attrs$gls)) == 0) {
       g2Htmlwidget$x$attrs$gls <- gls
@@ -659,4 +660,153 @@ g2guideLine <- function(g2Htmlwidget
     g2Htmlwidget
   }
   else stop('guideLine only support "line","bar","area","scatter"! ')
+}
+#'visible	boolean	是否显示
+#' type	string	文本标签类型
+#' - line: 跟随在折线尾部
+#' - point: 显示在数据点上
+#' formatter	function	对文本标签内容进行格式化
+#' offsetX	number	在 label 位置的基础上再往 x 方向的偏移量
+#' offsetY	number	在 label 位置的基础上再往 y 方向的偏移量
+#' style	object	配置文本标签样式。
+#' 
+#' 
+#' 
+#' @export g2label
+#' 
+g2label <- function() {
+  type = c('point', 'line')
+  , offsetX = 0
+  , offsetY = 0
+
+}
+
+
+# fontSize	number	文字大小
+# fontFamily	string	文字字体
+# fontWeight	number	字体粗细
+# lineHeight	number	文字的行高
+# textAlign	string	设置文本内容的当前对齐方式, 支持的属性：center
+# textBaseline	string	设置在绘制文本时使用的当前文本基线, 支持的属性:top
+# fill	string	文字的填充色
+# fillOpacity	number	文字的填充透明度
+# stroke	string	文字的描边
+# lineWidth	number	文字描边的宽度
+# lineDash	[number,number]	描边的虚线配置，第一个值为虚线每个分段的长度，第二个值为分段间隔的距离。lineDash设为[0,0]的效果为没有描边。
+# lineOpacity	number	描边透明度
+# opacity	number	文字的整体透明度
+# shadowColor	string	文字阴影颜色
+# shadowBlur	number	文字阴影的高斯模糊系数
+# shadowOffsetX	number	设置阴影距文字的水平距离
+# shadowOffsetY	number	设置阴影距文字的垂直距离
+# cursor	string	鼠标样式。同 css 的鼠标样式,默认 'default'。
+textStyle <- function(
+  textStyle
+, fontSize = 12
+, fontFamily = NULL
+, fontWeight = 30
+, lineHeight
+, textAlign = 'center'
+, fill = 'black'
+, fillOpacity = 1
+, stroke = 'bold'
+, lineWidth = 0
+, lineDash = c(0, 0)
+, lineOpacity = 1
+, opacity = 1
+, shadowColor = NULL
+, shadowBlur = NULL
+, shadowOffsetX = NULL
+, shadowOffsetY = NULL
+, cursor = 'default'
+) {
+  textStyle<-list(
+  fontSize =fontSize
+  , fontFamily = fontFamily
+  , fontWeight = fontWeight
+  , lineHeight=lineHeight
+  , textAlign = textAlign
+  , fill = fill
+  , fillOpacity = fillOpacity
+  , stroke = stroke
+  , lineWidth = lineWidth
+  , lineDash = lineDash
+  , lineOpacity = lineOpacity
+  , opacity = opacity
+  , shadowColor = shadowColor
+  , shadowBlur = shadowBlur
+  , shadowOffsetX = shadowOffsetX
+  , shadowOffsetY = shadowOffsetY
+  , cursor = cursor
+  )
+  textStyle 
+}
+lineStlye <- function(
+   linStyle
+  , stroke = 'black'
+  , lineWidth = 2
+  , lineDashh = c(0, 0)
+  , opacity = 1
+  , shadowColor = NULL
+  , shadowBlur = NULL
+  , shadowOffsetX = 0
+  , shadowOffsetY = 0
+  , cursor = 'default'
+) {
+  linStyle<-list(
+  stroke =  stroke 
+  , lineWidth = lineWidth
+  , lineDashh = lineDashh
+  , opacity = opacity
+  , shadowColor = shadowColor
+  , shadowBlur = shadowBlur
+  , shadowOffsetX = shadowOffsetX
+  , shadowOffsetY = shadowOffsetY
+  , cursor = cursor)
+  linStyle
+}
+
+# fill	string	图形的填充色
+# fillOpacity	number	图形的填充透明度
+# stroke	string	图形的描边
+# lineWidth	number	图形描边的宽度
+# lineDash	[number,number]	描边的虚线配置，第一个值为虚线每个分段的长度，第二个值为分段间隔的距离。lineDash设为[0,0]的效果为没有描边。
+# lineOpacity	number	描边透明度
+# opacity	number	图形的整体透明度
+# shadowColor	string	图形阴影颜色
+# shadowBlur	number	图形阴影的高斯模糊系数
+# shadowOffsetX	number	设置阴影距图形的水平距离
+# shadowOffsetY	number	设置阴影距图形的垂直距离
+# cursor	string	鼠标样式。同 css 的鼠标样式,默认 'default'。
+#'@export gStyle
+gStyle <- function(
+  gStyle
+  , fill = 'black'
+  , fillOpacity = 1
+  , stroke = 'black'
+  , lineWidth = 1
+  , lineDash = c(0, 0)
+  , lineOpacity = 0
+  , opacity = 1
+  , shadowColor = NULL
+  , shadowBlur = NULL
+  , shadowOffsetX = 0
+  , shadowOffsetY = 0
+  , cursor = 'default'
+) {
+  gStyle <- list(
+  fill = fill
+  , fillOpacity = fillOpacity
+  , stroke = stroke
+  , lineWidth = lineWidth
+  , lineDash = lineDash
+  , lineOpacity = lineOpacity
+  , opacity = opacity
+  , shadowColor = shadowColor
+  , shadowBlur = shadowBlur
+  , shadowOffsetX = shadowOffsetX
+  , shadowOffsetY = shadowOffsetY
+  , cursor = cursor
+  )
+  gStyle
 }
