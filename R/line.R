@@ -124,6 +124,7 @@
 #' @export line
 line <- function(
     data
+    ,meta=NULL
     , xField = NULL
     , yField = NULL
     , seriesField = NULL
@@ -166,6 +167,7 @@ line <- function(
   title <- list(text = title, titleVisible = titleVisible)
   description <- list(text = description, descVisible = descVisible)
   legend <- list(visible=legend)
+  # meta
 
   attrs <- list(
       xField = xField

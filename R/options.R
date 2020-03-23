@@ -466,8 +466,7 @@ g2title <- function(g2Htmlwidget
   if (!is.character(title)) {
     title <- as.character(title)
   }
-  if (length(title) == 0) titleVisible = FALSE
-  else titleVisible <- TRUE
+  c
   if (!is.null(align)) align <- 'center'
   align <- match.arg(align)
   if (!is.null(baseline)) baseline <- 'middle'
@@ -534,13 +533,13 @@ g2legend <- function(g2Htmlwidget
     , marker = c('circle', 'square', 'diamond', 'trianguideLinee', 'trianguideLineeDown', 'hexagon', 'bowtie', 'cross', 'tick', 'plus', 'hyphen', 'line', 'hollowCircle', 'hollowSquare', 'hollowDiamond', 'hollowTrianguideLinee', 'hollowTrianguideLineeDown', 'hollowHexagon', 'hollowBowti')
     , offsetX = 0
     , offsetY = 0
-    ,flipPage=TRUE
+    , flipPage = TRUE
 ) {
   if (is.null(marker)) marker <- 'circle'
   marker <- match.arg(marker)
   if (is.null(position)) position <- 'right-center'
   position <- match.arg(position)
-  legend <- list(visible = visible, position = position, marker = marker, offsetX = offsetX, offsetY = offsetY,flipPage=flipPage)
+  legend <- list(visible = visible, position = position, marker = marker, offsetX = offsetX, offsetY = offsetY, flipPage = flipPage)
   g2Htmlwidget$x$attrs$legend <- mergeLists(g2Htmlwidget$x$attrs$legend, legend)
   g2Htmlwidget
 }
@@ -676,9 +675,8 @@ g2guideLine <- function(g2Htmlwidget
 #' 
 g2label <- function() {
   type = c('point', 'line')
-  , offsetX = 0
-  , offsetY = 0
-
+  offsetX = 0
+  offsetY = 0
 }
 
 
@@ -701,11 +699,10 @@ g2label <- function() {
 # shadowOffsetY	number	设置阴影距文字的垂直距离
 # cursor	string	鼠标样式。同 css 的鼠标样式,默认 'default'。
 textStyle <- function(
-  textStyle
-, fontSize = 12
+ fontSize = 12
 , fontFamily = NULL
 , fontWeight = 30
-, lineHeight
+, lineHeight = 1
 , textAlign = 'center'
 , fill = 'black'
 , fillOpacity = 1
@@ -720,11 +717,11 @@ textStyle <- function(
 , shadowOffsetY = NULL
 , cursor = 'default'
 ) {
-  textStyle<-list(
-  fontSize =fontSize
+  style <- list(
+  fontSize = fontSize
   , fontFamily = fontFamily
   , fontWeight = fontWeight
-  , lineHeight=lineHeight
+  , lineHeight = lineHeight
   , textAlign = textAlign
   , fill = fill
   , fillOpacity = fillOpacity
@@ -739,11 +736,11 @@ textStyle <- function(
   , shadowOffsetY = shadowOffsetY
   , cursor = cursor
   )
-  textStyle 
+  style
 }
+
 lineStlye <- function(
-   linStyle
-  , stroke = 'black'
+   stroke = 'black'
   , lineWidth = 2
   , lineDashh = c(0, 0)
   , opacity = 1
@@ -753,8 +750,8 @@ lineStlye <- function(
   , shadowOffsetY = 0
   , cursor = 'default'
 ) {
-  linStyle<-list(
-  stroke =  stroke 
+  style <- list(
+  stroke = stroke
   , lineWidth = lineWidth
   , lineDashh = lineDashh
   , opacity = opacity
@@ -763,7 +760,7 @@ lineStlye <- function(
   , shadowOffsetX = shadowOffsetX
   , shadowOffsetY = shadowOffsetY
   , cursor = cursor)
-  linStyle
+  style
 }
 
 # fill	string	图形的填充色
@@ -780,8 +777,7 @@ lineStlye <- function(
 # cursor	string	鼠标样式。同 css 的鼠标样式,默认 'default'。
 #'@export gStyle
 gStyle <- function(
-  gStyle
-  , fill = 'black'
+ fill = 'black'
   , fillOpacity = 1
   , stroke = 'black'
   , lineWidth = 1
@@ -794,7 +790,7 @@ gStyle <- function(
   , shadowOffsetY = 0
   , cursor = 'default'
 ) {
-  gStyle <- list(
+  style <- list(
   fill = fill
   , fillOpacity = fillOpacity
   , stroke = stroke
@@ -808,5 +804,117 @@ gStyle <- function(
   , shadowOffsetY = shadowOffsetY
   , cursor = cursor
   )
-  gStyle
+  style
+}
+
+
+#' Create an axis for a chart
+#'
+#' Add an axis to a chart.
+#'
+#' @export
+#' @rdname axis
+
+# visible	boolean	是否可见
+# line	object	坐标轴轴线
+# - visible: boolean 是否可见
+# - style：object 轴线样式
+# grid	object	网格线
+# - visible: boolean 是否可见
+# - style：object 网格线样式
+# label	object	坐标轴标签
+# - visible: boolean 是否可见
+# - formatter: function  坐标轴标签格式化
+# - suffix: string 后缀
+# - offsetX: number 位置在 x 方向上的偏移量
+# - offsetY：number 位置在 y 方向上的偏移量
+# - style：object 样
+# -autoHide: boolean 是否自动隐藏
+# -autoRotate: boolean 是否自动旋转
+# tickLine	object	坐标轴刻度
+#   - visible：boolean 是否可见
+#   - style: object 样式
+# title	object	坐标轴标题
+# - visible： boolean 是否可见
+# - text: string 标题文字
+# - offset: number 位置偏移量
+# - style：object 样式
+
+Axis <- function(g2Htmlwidget
+  , which = c("x", "y")
+  , visible = TRUE
+  , type = c("dateTime", "time", "linear", "time", "cat", "dateTime", "category", "log", "pow", "time")
+,tickCount
+,tickInterval
+,min
+,max
+  , line = list(visible = TRUE, style = lineStlye())
+  , grid = list(visible = TRUE, style = lineStlye())
+  , label = list(visible = TRUE, suffix = NULL, precision = 2, offsetX = 0, offsetY = 0, autoHide = TRUE, autoRotate = TRUE, style = textStyle())
+  , tickLine = list(visible = TRUE, style = lineStlye())
+  , title = list(text = '', offset = 12, style = textStyle())
+) {
+  which = match.arg(which)
+  type = match.arg(type)
+  i = paste0(which, 'Axis')
+  if (length(title$text) >= 0)
+    title$visible <- TRUE
+  else title$visible <- FALSE
+
+  attrs[[i]] <- list(
+     visible = visible
+     , type = type
+     , line = line
+     , grid = grid
+     , label = label
+     , tickLine = tickLine
+     , title = title
+   )
+  g2Htmlwidget$x$attrs[[i]] <- mergeLists(g2Htmlwidget$x$attrs[[i]], attrs[[i]])
+  g2Htmlwidget
+}
+#' @export
+#' @rdname axis
+xAxis = function(g2Htmlwidget, ...) {
+  Axis(g2Htmlwidget, which = 'x', ...)
+}
+
+#' @export
+#' @rdname axis
+yAxis = function(g2Htmlwidget, ...) {
+  Axis(g2Htmlwidget, which = 'y', ...)
+}
+
+axisType = function(data, which = c('x', 'y')) {
+  if (is.numeric(data) || is.null(data)) return('value')
+  if (is.factor(data) || is.character(data)) return('category')
+  if (inherits(data, 'Date')) return('time')
+  message('The structure of the ', which, ' variable:')
+  str(data)
+  stop('Unable to derive the axis type automatically from the ', which, ' variable')
+}
+
+# meta
+setMeta<-function(field,alias,formatter,values=c(),range=c(1,0)){
+  if(is.vector(range)&&length(range)==2) range=range
+  else stop("range must be 2 dim vector")
+  if(!is.vector(values)) stop("values must vector!")
+  if(!is.character(alias)) stop("alias must be string")
+  meta<-list()
+  meta[[field]]<-list(
+    alias=alias
+    ,formatter=formatter
+    ,values=values
+    ,range=c(1,0)
+  )
+  # return meta
+  meta
+}
+
+setFormatter<-function(x,type=c("thousandth","time","other"),js
+){
+type <- match.arg(type)
+if(!is.character(js)) stop("js must be string")
+formatter<-list(x=x,type=type,js=js)
+formatter
 }

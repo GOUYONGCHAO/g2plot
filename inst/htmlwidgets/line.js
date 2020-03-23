@@ -55,19 +55,25 @@ HTMLWidgets.widget({
             text: attrs.description.text,
           };
         // legend
-        if (x.attrs.legend.visible==true || x.attrs.legend.visible==null) legend =x.attrs.legend
+        if (x.attrs.legend.visible == true || x.attrs.legend.visible == null) legend = x.attrs.legend
         else legend = {
           visible: false,
         };
         // guideline
         var gls = [];
-        for(let i in x.attrs.gls){
+        for (let i in x.attrs.gls) {
           let o = {};
           o = x.attrs.gls[i];
           gls.push(o)
         };
-       
-
+        // axis
+        // xaxis
+        if (x.attrs.xAxis) xAxis = x.attrs.xAxis
+        else xAxis = { visible: true };
+        //  yaxis
+        if (x.attrs.yAxis) yAxis = x.attrs.yAxis
+        else yAxis = { visible: true };
+        // plot
         plot = new G2Plot.Line(container, {
           data,
           xField: attrs.xField,
@@ -76,13 +82,15 @@ HTMLWidgets.widget({
           title,
           description,
           legend,
-          guideLine:gls,
+          guideLine: gls,
           point: {
             visible: attrs.point,
           },
           label: {
             visible: false,
           },
+          xAxis,
+          yAxis
         });
         // render plot
         plot.render();
