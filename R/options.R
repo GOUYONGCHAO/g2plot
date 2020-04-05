@@ -777,34 +777,47 @@ lineStlye <- function(
 # cursor	string	鼠标样式。同 css 的鼠标样式,默认 'default'。
 #'@export gStyle
 gStyle <- function(
- fill = 'black'
-  , fillOpacity = 1
-  , stroke = 'black'
-  , lineWidth = 1
-  , lineDash = c(0, 0)
-  , lineOpacity = 0
-  , opacity = 1
+ fill = NULL
+  , fillOpacity = NULL
+  , stroke =  NULL
+  ,strokeOpacity = NULL
+  , lineWidth = NULL
+  , lineDash = NULL
+  , lineOpacity = NULL
+  , opacity = NULL
   , shadowColor = NULL
   , shadowBlur = NULL
-  , shadowOffsetX = 0
-  , shadowOffsetY = 0
-  , cursor = 'default'
+  , shadowOffsetX = NULL
+  , shadowOffsetY = NULL
+  , cursor = NULL
 ) {
-  style <- list(
-  fill = fill
-  , fillOpacity = fillOpacity
-  , stroke = stroke
-  , lineWidth = lineWidth
-  , lineDash = lineDash
-  , lineOpacity = lineOpacity
-  , opacity = opacity
-  , shadowColor = shadowColor
-  , shadowBlur = shadowBlur
-  , shadowOffsetX = shadowOffsetX
-  , shadowOffsetY = shadowOffsetY
-  , cursor = cursor
-  )
-  style
+  style<-list()
+  if (!is.null(fill)) style$fill <- fill
+  if (!is.null(fillOpacity)) style$fillOpacity <- fillOpacity
+  if (!is.null(stroke)) style$stroke <- stroke
+  if (!is.null(strokeOpacity)) style$strokeOpacity <- strokeOpacity
+  if (!is.null(lineWidth)) style$lineWidth <- lineWidth
+  # lineDash like (1,1),(0,1)
+  if (!is.null(lineDash)) 
+  {
+    if( is.vector(lineDash) && is.numeric(lineDash) && length(lineDash)==2)
+    style$lineDash <- lineDash
+    else stop("lineDash should be 2 dimension numeric vector")
+  }
+  if (!is.null(lineOpacity)) {
+    if( is.numeric(lineOpacity)  style$lineOpacity <- lineOpacity
+    else stop("lineOpacity need numeric")
+  }
+ 
+  if (!is.null(opacity)) style$opacity <- opacity
+  if (!is.null(shadowColor)) style$shadowColor <- shadowColor
+  if (!is.null(shadowBlur)) style$shadowBlur <- shadowBlur
+  if (!is.null(shadowOffsetX)) style$shadowOffsetX <- shadowOffsetX
+  if (!is.null(shadowOffsetY)) style$shadowOffsetY <- shadowOffsetY
+  if (!is.null(cursor)) style$cursor <- cursor
+  if (!is.null(radiusField)) style$fill <- fill
+
+  return style
 }
 
 
@@ -895,7 +908,7 @@ axisType = function(data, which = c('x', 'y')) {
 }
 
 # meta
-setMeta<-function(field,alias,formatter,values=c(),range=c(1,0)){
+setMeta<-function(field,alias,formatter='',values=c(),range=c(1,0)){
   if(is.vector(range)&&length(range)==2) range=range
   else stop("range must be 2 dim vector")
   if(!is.vector(values)) stop("values must vector!")
@@ -903,18 +916,21 @@ setMeta<-function(field,alias,formatter,values=c(),range=c(1,0)){
   meta<-list()
   meta[[field]]<-list(
     alias=alias
-    ,formatter=formatter
+    ,formatter=setFormatter(formatter)
     ,values=values
     ,range=c(1,0)
   )
   # return meta
   meta
 }
-
-setFormatter<-function(x,type=c("thousandth","time","other"),js
+# formatter
+setFormatter<-function(jsStr
 ){
-type <- match.arg(type)
-if(!is.character(js)) stop("js must be string")
-formatter<-list(x=x,type=type,js=js)
+if(!is.character(jsStr)) stop("js must be string")
+formatter<-list(formatter=jsStr)
 formatter
 }
+
+
+
+

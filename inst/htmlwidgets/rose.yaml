@@ -1,0 +1,6 @@
+dependencies:
+  - name: g2plot
+    version: 1.0.0
+    src: htmlwidgets/lib/g2plot-1.0.0
+    script: g2plot.js
+    
