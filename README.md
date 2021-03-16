@@ -12,7 +12,14 @@ htmlwidgets
 ```r
 install.packages("devtools")
 library(devtools)
+devtools::install_github('GOUYONGCHAO/g2plot')
+```
+#画一个饼图
+```
+
 ```
 #鸣谢
+
 感谢antv团队
+
 感谢Rstudio团队
