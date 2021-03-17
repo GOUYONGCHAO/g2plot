@@ -2,7 +2,7 @@
 save <- function(){ }
 # make sure htmlwidgets:::toJSON() turns list() to {} in JSON, instead of []
 .emptyList <- setNames(list(), character())
-emptyList <- function() .emptyList
+emptyList <- function().emptyList
 
 # merge two lists  by names,eg. x = list(a = 1, b = 2), mergeList(x, list(b =3)) => list(a = 1, b = 3)
 # thanks for  yihuixie @rstudio

@@ -1,5 +1,5 @@
 
-#' rose 
+#' rose
 #'
 #' @import htmlwidgets magrittr
 #' @export %>%
@@ -99,8 +99,8 @@
 # type: 'point' | 'rose'  图形标签类型
 
 # type 类型	表现
-# type: 'point'	
-# type: 'rose'	
+# type: 'point'
+# type: 'rose'
 # formatter: function 对 label 的显示文本进行格式化
 # offsetX: number 在 label 位置的基础上再往 x 方向的偏移量
 # offsetY: number 在 label 位置的基础上再往 y 方向的偏移量
@@ -138,8 +138,14 @@ rose <- function(
 # chart style
     , redius = NULL
     , color = NULL
-    , sectorStyle = (fill = NULL, stroke = NULL, lineWidth = NULL, lineDash = NULL, opacity = NULL, fillOpacity = NULL, strokeOpacity = NULL)
-    , elementId = NULL
+,sectorStyle =c(fill = NULL
+               ,stroke = NULL
+               ,lineWidth = NULL
+               ,lineDash = NULL
+               ,opacity = NULL
+               ,fillOpacity = NULL
+               ,strokeOpacity = NULL)
+,elementId = NULL
     ) {
   attrs <- list()
   if (!is.matrix(data) && !is.data.frame(data) && is.list(data)) {
@@ -157,7 +163,7 @@ rose <- function(
   if (redius >= 0 && redius <= 1) attrs$redius <- redius
   else stop("redius should be in (0, 1)")
 if(is.null(sectorStyle))  attrs$sectorStyle<-sectorStyle
-  
+
   # create widget
   g2Htmlwidget <- htmlwidgets::createWidget(
     name = 'rose',

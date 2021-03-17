@@ -2,6 +2,11 @@
 #'
 #' <Add Description>
 #'
+#' @param message
+#' @param width
+#' @param height
+#' @param elementId
+#'
 #' @import htmlwidgets
 #'
 #' @export
@@ -50,3 +55,6 @@ renderG2plot <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(expr, g2plotOutput, env, quoted = TRUE)
 }
+
+
+

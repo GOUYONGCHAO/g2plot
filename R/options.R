@@ -668,11 +668,11 @@ g2guideLine <- function(g2Htmlwidget
 #' offsetX	number	在 label 位置的基础上再往 x 方向的偏移量
 #' offsetY	number	在 label 位置的基础上再往 y 方向的偏移量
 #' style	object	配置文本标签样式。
-#' 
-#' 
-#' 
+#'
+#'
+#'
 #' @export g2label
-#' 
+#'
 g2label <- function() {
   type = c('point', 'line')
   offsetX = 0
@@ -790,7 +790,8 @@ gStyle <- function(
   , shadowOffsetX = NULL
   , shadowOffsetY = NULL
   , cursor = NULL
-) {
+)
+{
   style<-list()
   if (!is.null(fill)) style$fill <- fill
   if (!is.null(fillOpacity)) style$fillOpacity <- fillOpacity
@@ -798,17 +799,15 @@ gStyle <- function(
   if (!is.null(strokeOpacity)) style$strokeOpacity <- strokeOpacity
   if (!is.null(lineWidth)) style$lineWidth <- lineWidth
   # lineDash like (1,1),(0,1)
-  if (!is.null(lineDash)) 
+  if (!is.null(lineDash))
   {
     if( is.vector(lineDash) && is.numeric(lineDash) && length(lineDash)==2)
     style$lineDash <- lineDash
     else stop("lineDash should be 2 dimension numeric vector")
   }
-  if (!is.null(lineOpacity)) {
-    if( is.numeric(lineOpacity)  style$lineOpacity <- lineOpacity
-    else stop("lineOpacity need numeric")
+  if (!is.null(lineOpacity)) { if( is.numeric(lineOpacity)) { style$lineOpacity <- lineOpacity}
+        else stop("lineOpacity need numeric")
   }
- 
   if (!is.null(opacity)) style$opacity <- opacity
   if (!is.null(shadowColor)) style$shadowColor <- shadowColor
   if (!is.null(shadowBlur)) style$shadowBlur <- shadowBlur
@@ -816,8 +815,7 @@ gStyle <- function(
   if (!is.null(shadowOffsetY)) style$shadowOffsetY <- shadowOffsetY
   if (!is.null(cursor)) style$cursor <- cursor
   if (!is.null(radiusField)) style$fill <- fill
-
-  return style
+  return(style)
 }
 
 
