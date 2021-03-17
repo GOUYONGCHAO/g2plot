@@ -10,24 +10,54 @@
 #' @import htmlwidgets
 #'
 #' @export
-g2plot <- function(message, width = NULL, height = NULL, elementId = NULL) {
+#'
+#'
+g2plot <- function(data,
+                   main = NULL,
+                   xlab = NULL,
+                   ylab = NULL,
+                   group = NULL,
+                   elementId = NULL,
+                   width = NULL,
+                   height = NULL,
+                   autofit=NULL)
+  {
+  if( is.null(width) | is.null(height) ){
+  autofit<-TRUE
+  else autofit<-FALSE
+  }
+  # create native g2plot attrs object
+  attrs <- list()
+  attrs$title <- main
+  attrs$xlabel <- xlab
+  attrs$ylabel <- ylab
+  attrs$labels <- names(data)
+  attrs$legend <- TRUE
+  attrs$autoFit <- autofit
+  # create x (dygraph attrs + some side data)
+  x <- list()
+  x$data <- data
+  # add data (strip names first so we marshall as a 2d array)
+  names(data) <- NULL
+  x$attrs <- attrs
+  x$tootips <- list()
+  x$labels<-list()
+  x$legend<-list()
+  x$annotation<-list()
+  x$events <- list()
+  attr(x, "data") <- data
 
-  # forward options using x
-  x = list(
-    message = message
-  )
-
-  # create widget
+  ##create widget
   htmlwidgets::createWidget(
     name = 'g2plot',
     x,
     width = width,
     height = height,
+    htmlwidgets::sizingPolicy(viewer.padding = 10, browser.fill = TRUE),
     package = 'g2plot',
     elementId = elementId
   )
 }
-
 #' Shiny bindings for g2plot
 #'
 #' Output and render functions for using g2plot within Shiny

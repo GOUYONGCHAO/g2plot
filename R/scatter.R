@@ -1,4 +1,4 @@
-#' scatter 
+#' scatter
 #'
 #'@import htmlwidgets
 #'@param  title
@@ -86,7 +86,7 @@
 
 # 趋势线组件，为图表田间回归曲线。
 
-# type: string 趋势线类型，支持 linear  exp  loess  log  poly  pow quad 7种 
+# type: string 趋势线类型，支持 linear  exp  loess  log  poly  pow quad 7种
 # style: Object 配置趋势线样式
 # showConfidence: boolean 是否绘制置信区间曲线
 # confidenceStyle: Object 配置置信区间样式
@@ -155,7 +155,7 @@ scatter <- function(
 
   )
   # create widget
-  g2Htmlwidget <- htmlwidgets::createWidget(
+  g2plot <- htmlwidgets::createWidget(
     name = 'scatter',
     x = list(data = data, attrs = attrs),
     width = width,
@@ -169,7 +169,7 @@ scatter <- function(
   #                         , knitr.defaultHeight = 400),
     elementId = elementId
   )
-  g2Htmlwidget
+  g2plot
 }
 
 #' Shiny bindings for scatter

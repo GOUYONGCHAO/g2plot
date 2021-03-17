@@ -780,7 +780,7 @@ gStyle <- function(
  fill = NULL
   , fillOpacity = NULL
   , stroke =  NULL
-  ,strokeOpacity = NULL
+  , strokeOpacity = NULL
   , lineWidth = NULL
   , lineDash = NULL
   , lineOpacity = NULL
