@@ -2,10 +2,15 @@
 #'
 #' <Add Description>
 #'
-#' @param message
 #' @param width
 #' @param height
 #' @param elementId
+#' @param data
+#' @param main
+#' @param xlab
+#' @param ylab
+#' @param group
+#' @param autofit
 #'
 #' @import htmlwidgets
 #'
