@@ -45,7 +45,6 @@ g2label<-function(g2plot
   if(!layout%in% c("overlap","fixedOverlap" ,"limitInShape")){
     stop("layout must be 'overlap','fixedOverlap','limitInShape'")
   }
-
 #return g2plot
   g2plot
 }    ##
