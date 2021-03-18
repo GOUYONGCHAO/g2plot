@@ -15,6 +15,7 @@ devtools::install_github('GOUYONGCHAO/g2plot')
 ```
 #使用说明
 包采用和ggplot相似的语法
+
 ###画一个散点图
 ```r
 x<--100:100
@@ -29,5 +30,6 @@ g(data) %>% scatter(aes(x = "y",y = "x"))
 #鸣谢
 
 感谢antv团队
+
 感谢Rstudio团队
 
