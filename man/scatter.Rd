@@ -4,32 +4,9 @@
 \alias{scatter}
 \title{scatter}
 \usage{
-scatter(
-  data,
-  xField = NULL,
-  yField = NULL,
-  colorField = NULL,
-  title = "",
-  description = "",
-  width = NULL,
-  height = NULL,
-  forceFit = TRUE,
-  padding = NULL,
-  pointStyle = NULL,
-  color = NULL,
-  tooltip = NULL,
-  legend = NULL,
-  label = NULL,
-  quadrant = NULL,
-  trendline = NULL,
-  theme = NULL,
-  events = NULL,
-  elementId = NULL
-)
+scatter(g, xField = NULL, yField = NULL, colorField = NULL)
 }
 \arguments{
-\item{data}{}
-
 \item{xField}{}
 
 \item{yField}{}
@@ -44,9 +21,13 @@ scatter(
 
 \item{padding}{}
 
-\item{pointStyle}{}
+\item{theme}{}
+
+\item{data}{}
 
 \item{color}{}
+
+\item{pointStyle}{}
 
 \item{tooltip}{}
 
@@ -57,8 +38,6 @@ scatter(
 \item{quadrant}{}
 
 \item{trendline}{}
-
-\item{theme}{}
 
 \item{events}{}
 }

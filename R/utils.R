@@ -27,3 +27,18 @@ mergeLists <- function (base_list, overlay_list, recursive = TRUE) {
     merged_list
   }
 }
+
+aes<-function(x=NULL,y=NULL,color=NULL, size=NULL, shape=NULL, type=NULL, meta=NULL){
+mapping<-list()
+  if(!is.null(x)){mapping$xField<-x}
+  if(!is.null(y)){mapping$yField<-y}
+  if(!is.null(color)){
+    if(color %in% colnames(data))
+    { mapping$colorFiled<-color}
+    else {
+      mapping$color<-color}
+  }
+mapping
+}
+
+

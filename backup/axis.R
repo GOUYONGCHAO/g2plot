@@ -32,7 +32,6 @@ axis <- function(g2plot,
                  label,  ##
                  title,
                  shapeStyle,
-                 label,
                  grid,
                  min=NULL,
                  max=NULL,
@@ -60,8 +59,7 @@ axis <- function(g2plot,
   }
 
   # copy attrs for modification
-  attrs <- dygraph$x$attrs
-
+  attrs <- g2plot$x$attrs
   axis <- list()
   axis$name <- name
   axis$label <- label
