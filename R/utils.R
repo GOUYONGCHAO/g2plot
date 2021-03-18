@@ -30,7 +30,7 @@ mergeLists <- function (base_list, overlay_list, recursive = TRUE) {
 }
 ##
 #' @export
-aes<-function(x,y,color=NULL
+aes<-function(data,x,y,color=NULL
               , size=NULL
               , shape=NULL
               , type=NULL
@@ -40,10 +40,19 @@ mapping<-list()
   if(!is.null(y)){mapping$yField<-y}
   if(!is.null(color)){
     if(color %in% colnames(data))
-    { mapping$colorFiled<-color}
+    { mapping$colorFiled<-color
+    }
     else {
       mapping$color<-color}
   }
+if(!is.null(size)){
+  if(size %in% colnames(data))
+  { mapping$sizeFiled<-size
+  mapping$size<-c(2,30)}
+  else if(is.numeric(size)) {
+    mapping$size<-abs(size)
+    }
+}
 mapping
 }
 

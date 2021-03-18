@@ -15,14 +15,19 @@ devtools::install_github('GOUYONGCHAO/g2plot')
 ```
 #使用说明
 包采用和ggplot相似的语法
-###画一个饼图
+###画一个散点图
 ```r
-data<-data.frame(x=c(1:100),y=round(rnorm(100, mean=0, sd=1)),0)
-g(data,'scatter',mapping=aes(x = "y",y = "x"))
+x<--100:100
+y<-x*x*x
+z<-y+x
+data<-data.frame(x=x,y=y,z=z)
+#可以用g()函数
+g(data,'scatter',mapping=aes(x = "x",y = "y"))
+#也可用g()%>% 图像类型（）%>% 其他函数
 g(data) %>% scatter(aes(x = "y",y = "x"))
 ```
 #鸣谢
 
 感谢antv团队
-
 感谢Rstudio团队
+

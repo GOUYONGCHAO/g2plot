@@ -21,7 +21,9 @@ HTMLWidgets.widget({
           data,
           xField: mapping.xField,
           yField: mapping.yField,
-          colorField: mapping.colorField
+          colorField: mapping.colorField,
+          sizeField:mapping.sizeFiled,
+          size:mapping.size
         });
         // render plot
        scatterPlot.render();

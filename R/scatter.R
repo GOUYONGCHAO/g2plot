@@ -9,7 +9,7 @@
 #'@export scatter
 scatter <- function(
     g
-    ,mapping=aes(x,y,color=NULL, size=NULL, shape=NULL, type=NULL, meta=NULL)
+    ,mapping=aes(x,y,color=NULL,size=NULL, shape=NULL, type=NULL, meta=NULL)
     ,width=NULL
     ,height=NULL
 ) {
@@ -20,6 +20,10 @@ if(!is.null(mapping)){
   }
 g$width<-width
 g$height<-height
-attr(g,"class")[[1]]<-"scatter"
+#attr(g,"class")[[1]]<-"scatter"
+sizingPolicy <-htmlwidgets::sizingPolicy(viewer.padding = 10, browser.fill = TRUE)
+attr(g,"class")<-c("scatter",
+          if (sizingPolicy$viewer$suppress) "suppress_viewer",
+          "htmlwidget")
 g
 }
