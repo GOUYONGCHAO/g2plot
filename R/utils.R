@@ -6,6 +6,7 @@ emptyList <- function().emptyList
 
 # merge two lists  by names,eg. x = list(a = 1, b = 2), mergeList(x, list(b =3)) => list(a = 1, b = 3)
 # thanks for  yihuixie @rstudio
+#' @export
 mergeLists <- function (base_list, overlay_list, recursive = TRUE) {
   if (length(base_list) == 0)
     overlay_list
@@ -27,8 +28,13 @@ mergeLists <- function (base_list, overlay_list, recursive = TRUE) {
     merged_list
   }
 }
-
-aes<-function(x=NULL,y=NULL,color=NULL, size=NULL, shape=NULL, type=NULL, meta=NULL){
+##
+#' @export
+aes<-function(x,y,color=NULL
+              , size=NULL
+              , shape=NULL
+              , type=NULL
+              , meta=NULL){
 mapping<-list()
   if(!is.null(x)){mapping$xField<-x}
   if(!is.null(y)){mapping$yField<-y}

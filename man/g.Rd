@@ -5,9 +5,10 @@
 \title{<Add Title>}
 \usage{
 g(
-  data,
-  gtype = "scatter",
-  mapping = aes(x, y, color, size, shape, type, meta),
+  data = NULL,
+  plot_type = NULL,
+  mapping = aes(x = NULL, y = NULL, color = NULL, size = NULL, shape = NULL, type =
+    NULL, meta = NULL),
   main = NULL,
   xlab = NULL,
   ylab = NULL,

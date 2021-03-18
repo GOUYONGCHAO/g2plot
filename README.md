@@ -7,16 +7,19 @@ AntV g2plot for R
 
 #R依赖包
 htmlwidgets
-
 #安装包
 ```r
 install.packages("devtools")
 library(devtools)
 devtools::install_github('GOUYONGCHAO/g2plot')
 ```
-#画一个饼图
-```
-
+#使用说明
+包采用和ggplot相似的语法
+###画一个饼图
+```r
+data<-data.frame(x=c(1:100),y=round(rnorm(100, mean=0, sd=1)),0)
+g(data,'scatter',mapping=aes(x = "y",y = "x"))
+g(data) %>% scatter(aes(x = "y",y = "x"))
 ```
 #鸣谢
 

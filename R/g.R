@@ -17,8 +17,8 @@
 #' @export
 #'
 #'
-g <-function(data,
-           gtype = 'scatter',
+g <-function(data=NULL,
+           plot_type = NULL,
            mapping = aes(x=NULL,y=NULL, color=NULL, size=NULL, shape=NULL, type=NULL, meta=NULL),
            main = NULL,
            xlab = NULL,
@@ -58,24 +58,25 @@ g <-function(data,
       gx$autofit <- FALSE
     }
     #
-    if (!gtype %in% c('scatter', 'line')) {
-      stop ('plot type not supported')
-    }
-    # create native g2plot attrs object
-    gx<-1
-    width<-100
-    height<-100
-    elementId<-1
-    gtype<-'type'
-    g <- htmlwidgets::createWidget(
-        name = gtype,
+  if(!is.null(plot_type)){ if (!plot_type %in% c('scatter', 'line')) {
+    stop ('plot type not supported')
+  }}
+    ## else{stop("plot_type cannot null")}
+    # create native g  object
+#     plot_type<-'name33'
+# gx<-1
+# width<-100
+# height<-1000
+# elementId<-'111'
+g <- htmlwidgets::createWidget(
+        name = plot_type,
         x = gx,
         width = width,
         height = height,
         htmlwidgets::sizingPolicy(viewer.padding = 10, browser.fill = TRUE),
         package = 'g2plot',
         elementId = elementId)
-    g
+g
     }
 #' Shiny bindings for g2plot
 #'
