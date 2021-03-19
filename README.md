@@ -7,6 +7,7 @@ AntV g2plot for R
 
 # R依赖包
 htmlwidgets
+magrittr
 
 ### 安装包
 ```r

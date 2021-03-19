@@ -1,8 +1,11 @@
 #save the plot
-save <- function(){ }
+save <- function() {
+
+}
 # make sure htmlwidgets:::toJSON() turns list() to {} in JSON, instead of []
 .emptyList <- setNames(list(), character())
-emptyList <- function().emptyList
+emptyList <- function()
+  .emptyList
 
 # merge two lists  by names,eg. x = list(a = 1, b = 2), mergeList(x, list(b =3)) => list(a = 1, b = 3)
 # thanks for  yihuixie @rstudio
@@ -30,30 +33,44 @@ mergeLists <- function (base_list, overlay_list, recursive = TRUE) {
 }
 ##
 #' @export
-aes<-function(data,x,y,color=NULL
-              , size=NULL
-              , shape=NULL
-              , type=NULL
-              , meta=NULL){
-mapping<-list()
-  if(!is.null(x)){mapping$xField<-x}
-  if(!is.null(y)){mapping$yField<-y}
-  if(!is.null(color)){
-    if(color %in% colnames(data))
-    { mapping$colorFiled<-color
+aes <- function(x,
+                y,
+                color = NULL
+                ,
+                size = NULL
+                ,
+                shape = NULL
+                ,
+                type = NULL
+                ,
+                meta = NULL) {
+  mapping <- list()
+  if (!is.null(x)) {
+    mapping$xField <- x
+  }
+  if (!is.null(y)) {
+    mapping$yField <- y
+  }
+  if (!is.null(color)) {
+    if (color %in% colnames(data))
+    {
+      mapping$colorFiled <- color
     }
     else {
-      mapping$color<-color}
-  }
-if(!is.null(size)){
-  if(size %in% colnames(data))
-  { mapping$sizeFiled<-size
-  mapping$size<-c(2,30)}
-  else if(is.numeric(size)) {
-    mapping$size<-abs(size)
+      mapping$color <- color
     }
+  }
+  if (!is.null(size)) {
+    if (size %in% colnames(data))
+    {
+      mapping$sizeFiled <- size
+      mapping$size <- c(2, 30)
+    }
+    else if (is.numeric(size)) {
+      mapping$size <- abs(size)
+    }
+  }
+  mapping
 }
-mapping
-}
-
+####
 

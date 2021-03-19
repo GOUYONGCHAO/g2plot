@@ -17,17 +17,25 @@ HTMLWidgets.widget({
         const data = HTMLWidgets.dataframeToD3(x.data);
         //fetch attributions
         const mapping = x.mapping;
+        const axis=x.axis;
         const scatterPlot = new G2Plot.Scatter(container ,{
           data,
           xField: mapping.xField,
           yField: mapping.yField,
           colorField: mapping.colorField,
           sizeField:mapping.sizeFiled,
-          size:mapping.size
-        });
+          size:mapping.size,
+           xAxis: {
+    label: {
+      formatter: (axis) => {return axis.x.title},
+    },
+    line: null,
+  },
+          });
         // render plot
        scatterPlot.render();
       },
+
       resize: function (width, height) {
 
         // TODO: code to re-render the widget with a new size

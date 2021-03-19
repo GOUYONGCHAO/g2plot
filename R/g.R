@@ -45,6 +45,9 @@ g <-function(data=NULL,
     gx$attrs$legend <- TRUE
     gx$attrs$width<-width
     gx$attrs$height<-height
+    gx$axis <- list()
+    gx$axis$x$title<-xlab
+    gx$axis$y$title<-ylab
     gx$tootips <- list()
     gx$labels <- list()
     gx$legend <- list()
