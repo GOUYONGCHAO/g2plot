@@ -5,10 +5,10 @@
 \title{Title
 mapping function like ggplot aes()}
 \usage{
-aes(g, x, y, color = NULL, size = NULL, shape = NULL, type = NULL, meta = NULL)
+aes(g, x, y, color = NULL, size = NULL, shape = NULL, group = NULL)
 }
 \arguments{
-\item{meta}{}
+\item{group}{}
 }
 \value{
 

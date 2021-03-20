@@ -7,8 +7,6 @@
 g(
   data = NULL,
   plot_type = NULL,
-  mapping = aes(x = NULL, y = NULL, color = NULL, size = NULL, shape = NULL, type =
-    NULL, meta = NULL),
   main = NULL,
   xlab = NULL,
   ylab = NULL,
