@@ -35,8 +35,8 @@ g <-function(data=NULL,
     # create x (dygraph attrs + some side data)
     # add data (strip names first so we marshall as a 2d array)
     names(data) <- NULL
-    gx$mapping<-mapping
     #constuct x
+    gx$aes<-list()
     gx$attrs <- list()
     gx$attrs$title <- main
     gx$attrs$xlabel <- xlab
@@ -46,8 +46,8 @@ g <-function(data=NULL,
     gx$attrs$width<-width
     gx$attrs$height<-height
     gx$axis <- list()
-    gx$axis$x$title<-xlab
-    gx$axis$y$title<-ylab
+    gx$axis$xtitle<-xlab
+    gx$axis$ytitle<-ylab
     gx$tootips <- list()
     gx$labels <- list()
     gx$legend <- list()

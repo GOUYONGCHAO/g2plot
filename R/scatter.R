@@ -9,21 +9,42 @@
 #'@export scatter
 scatter <- function(
     g
-    ,mapping=aes(x,y,color=NULL,size=NULL, shape=NULL, type=NULL, meta=NULL)
     ,width=NULL
     ,height=NULL
+    ,shape=NULL
 ) {
-  # return modified g
-#if(!is.null(attrs)){g$x$attrs <- mergeLists(g$x$attrs, attrs)}
-if(!is.null(mapping)){
-  g$x$mapping<-mergeLists(g$x$mapping,mapping)
-  }
 g$width<-width
 g$height<-height
-#attr(g,"class")[[1]]<-"scatter"
+style<-list()
+#shape default "circle"
+if(is.null(shape)){shape='circle'}
+#
+else if (!shape %in% c( 'circle',
+                   'square',
+                   'bowtie',
+                   'diamond',
+                   'hexagon',
+                   'triangle',
+                   'triangle-down',
+                   'hollow-circle',
+                   'hollow-square',
+                   'hollow-bowtie',
+                   'hollow-diamond',
+                   'hollow-hexagon',
+                   'hollow-triangle',
+                   'hollow-triangle-down',
+                   'cross',
+                   'tick',
+                   'plus',
+                   'hyphen','line') ) {
+  stop("shape is not support")
+}
+style$shape<-shape
+g$x$style <- mergeLists(g$x$style, style)
 sizingPolicy <-htmlwidgets::sizingPolicy(viewer.padding = 10, browser.fill = TRUE)
-attr(g,"class")<-c("scatter",
-          if (sizingPolicy$viewer$suppress) "suppress_viewer",
-          "htmlwidget")
+attr(g,"class")<-c("scatter",if (sizingPolicy$viewer$suppress) "suppress_viewer","htmlwidget")
 g
 }
+
+
+
