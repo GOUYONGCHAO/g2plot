@@ -16,7 +16,7 @@ library(devtools)
 devtools::install_github('GOUYONGCHAO/g2plot')
 ```
 # 使用说明
-包采用和ggplot相似的语法
+包采用和ggplot相似的语法。由于ggplot的实现比较复杂，因此采用`%>%`管道函数进行画图。
 
 ### 画一个散点图
 ```r
@@ -24,10 +24,8 @@ x<--100:100
 y<-x*x*x
 z<-y+x
 data<-data.frame(x=x,y=y,z=z)
-#可以用g()函数
-g(data,'scatter',mapping=aes(x = "x",y = "y"))
-#也可用g()%>% 图像类型（）%>% 其他函数
-g(data) %>% scatter(aes(x = "y",y = "x"))
+#也可用g()%>% 数据映射函数aes（）%>% 图像类型函数（）%>%其他设置
+g(data) %>% aes(x = "y",y = "x",color='z',size='z') %>% scatter()
 ```
 # 鸣谢
 

@@ -1,12 +1,12 @@
 #' Title
 #' mapping function like ggplot aes()
+#'
 #' @param x
 #' @param y
 #' @param color
 #' @param size
+#' @param g
 #' @param shape
-#' @param type
-#' @param meta
 #'
 #' @return
 #' @export
@@ -18,11 +18,7 @@
                     ,
                     size = NULL
                     ,
-                    shape = NULL
-                    ,
-                    type = NULL
-                    ,
-                    meta = NULL) {
+                    shape = NULL) {
       mapping <- list()
       if (!is.null(x)) {
         mapping$xField <- x
@@ -34,7 +30,7 @@
         if (color %in% colnames(g$x$data))
         {
           mapping$colorField <- color
-          mapping$color<-colourvalues::color_values(g$x$data[,color])
+          #mapping$color<-colourvalues::color_values(g$x$data[,color])
         }
         else {
           mapping$color <- color
@@ -50,6 +46,8 @@
           mapping$size <- abs(size)
         }
       }
+      #merge mapping
       g$x$mapping <- mergeLists(g$x$mapping, mapping)
+      #return g
       g
     }

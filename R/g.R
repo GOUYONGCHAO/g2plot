@@ -19,7 +19,6 @@
 #'
 g <-function(data=NULL,
            plot_type = NULL,
-           mapping = aes(x=NULL,y=NULL, color=NULL, size=NULL, shape=NULL, type=NULL, meta=NULL),
            main = NULL,
            xlab = NULL,
            ylab = NULL,
@@ -64,13 +63,6 @@ g <-function(data=NULL,
   if(!is.null(plot_type)){ if (!plot_type %in% c('scatter', 'line')) {
     stop ('plot type not supported')
   }}
-    ## else{stop("plot_type cannot null")}
-    # create native g  object
-#     plot_type<-'name33'
-# gx<-1
-# width<-100
-# height<-1000
-# elementId<-'111'
 g <- htmlwidgets::createWidget(
         name = plot_type,
         x = gx,

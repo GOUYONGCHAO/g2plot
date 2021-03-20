@@ -29,15 +29,6 @@ HTMLWidgets.widget({
           sizeField:mapping.sizeField,
           size:mapping.size,
           shape:x.style.shape,
-          xAxis: {
-
-                     title:{
-                      text:'this y title'},
-                    },
-  yAxis: { title:{
-                                text:'this is title'},
-           },
-
           });
         // render plot
        scatterPlot.render();
