@@ -49,9 +49,6 @@ x<-'c'
 g<-list()
 g$x$dt<-dt
 g$x$dt
-ff<-function(g,x){
-  is.numeric(eval(substitute(g$x$dt$a,list(a=x)))
-}
 ff(g,x)
 substitute(g$x$dt$a,list(a=x))
 
@@ -91,3 +88,6 @@ if (eval(substitute(is.numeric(dt$a),list(a=x)))){
 is.numeric(dt$z)
 
 data=cbind(a=c(rep("c",100)),dt)
+
+
+

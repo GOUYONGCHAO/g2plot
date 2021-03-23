@@ -29,6 +29,10 @@ HTMLWidgets.widget({
           sizeField:mapping.sizeField,
           size:mapping.size,
           shape:x.style.shape,
+          pointStyle: {
+    fillOpacity: 0.8,
+    strokeOpacity:0
+  },
           });
         // render plot
        scatterPlot.render();

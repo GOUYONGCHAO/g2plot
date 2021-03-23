@@ -52,7 +52,7 @@ g <-function(data=NULL,
     gx$legend <- list()
     gx$annotation <- list()
     gx$events <- list()
-
+    gx$style <- list()
     if (is.null(width) | is.null(height)) {
       gx$autofit <- TRUE
     }

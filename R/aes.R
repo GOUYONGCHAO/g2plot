@@ -38,7 +38,8 @@ aes <- function(g,
     if (color %in% colnames(g$x$data))
     {
       mapping$colorField <- color
-      mapping$color<-colourvalues::color_values(g$x$data[,color])
+      mapping$color<-rainbow(length(unique(eval(substitute(g$x$data$a,list(a=color))))))
+      # }
     }
     else {
       mapping$color <- color
