@@ -94,6 +94,21 @@ data<-data.frame(x=x,y=x)
 g(data,plot_type = 'pie') %>%pie(radius = 1 )%>%g2plot::aes(x='x',y='y',color = 'y')
 
 
+data<-fromJSON( '/Users/gouyongchao/g2plot/data/stock.json')
+data$trade_date<-as.Date(data$trade_date)
 
+g(data,plot_type = 'stock') %>% g2plot::aes(x ="trade_date",y = "y")
+g(data) %>% stock(open = "close",close = 'open',high = "high",low = 'low') %>% g2plot::aes(x ="trade_date",y = "y")
+g(data) %>% stock() %>% g2plot::aes(x ="trade_date",y = "y")
+??switch
+y<-'pie'
+x <- switch(y,
+  stock={
+    name<-'stock'
+  },
+  pie={
+    name<-'pie'
+  }
+)
 
-
+print(name)

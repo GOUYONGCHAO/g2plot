@@ -1,6 +1,6 @@
 HTMLWidgets.widget({
 
-  name: 'pie',
+  name: 'stock',
 
   type: 'output',
 
@@ -19,23 +19,18 @@ HTMLWidgets.widget({
 
         //fetch attributions
         const mapping = x.mapping;
-        const piePlot = new G2Plot.Pie(container ,{
+        const stockPlot = new G2Plot.Stock(container ,{
           data,
           appendPadding: 30,
-          angleField: mapping.xField,
-         // yField: mapping.yField,
+          xField: mapping.xField,
+          //
+          //yField: ['open', 'close', 'high', 'low'],
+          yField:mapping.yField,
           colorField: mapping.colorField,
           color:mapping.color,
-          sizeField:mapping.sizeField,
-          size:mapping.size,
-          seriesField:mapping.seriesField,
-          radius:x.style.radius,
-          innerRadius:x.style.inneradius,
-          startAngle:x.style.startangle,
-          endAngle:x.style.endangle,
           });
         // render plot
-      piePlot.render();
+       stockPlot.render();
       },
 
       resize: function (width, height) {

@@ -17,7 +17,7 @@
 #'
 aes <- function(g,
                 x,
-                y,
+                y=NULL,
                 color = NULL,
                 size = NULL,
                 shape = NULL,group = NULL) {
@@ -26,16 +26,22 @@ aes <- function(g,
   if (!is.null(x)) {
     mapping$xField <- x
     if(is.numeric(eval(substitute(g$x$data$a,list(a=x))))){
-
       eval(substitute(meta$a$type<-'cat',list(a=x)))
     }
   }
   if (!is.null(y)) {
-    mapping$yField <- y
-    if(is.numeric(eval(substitute(g$x$data$a,list(a=y))))){
-      eval(substitute(meta$a$type<-'cat',list(a=y)))
+    switch (g$x$attrs$plotType,
+            stock ={
+              if(is.null(g$x$mapping$yField))
+                {mapping$yField <- c('open', 'close', 'high', 'low')}
+            },
+            {
+            mapping$yField <- y
+            if(is.numeric(eval(substitute(g$x$data$a,list(a=y))))){
+              eval(substitute(meta$a$type<-'cat',list(a=y)))
+            }}
+    )
     }
-  }
   if (!is.null(color)) {
     if (color %in% colnames(g$x$data))
     {

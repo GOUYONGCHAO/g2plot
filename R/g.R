@@ -36,6 +36,7 @@ g <-function(data=NULL,
     #constuct x
     gx$aes<-list()
     gx$attrs <- list()
+    if (!is.null(plot_type)){ gx$attrs$plotType<-plot_type }
     gx$attrs$title <- main
     gx$attrs$xlabel <- xlab
     gx$attrs$ylabel <- ylab
@@ -59,8 +60,8 @@ g <-function(data=NULL,
       gx$autofit <- FALSE
     }
     #
-  if(!is.null(plot_type)){ if (!plot_type %in% c('scatter', 'line','area','heatmap','pie')) {
-    stop ('plot type not supported')
+  if(!is.null(plot_type)){ if (!plot_type %in% c('scatter', 'line','area','heatmap','pie','stock')) {
+    stop ('Plot type not supported')
   }}
 g <- htmlwidgets::createWidget(
         name = plot_type,
