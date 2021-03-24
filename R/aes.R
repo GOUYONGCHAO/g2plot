@@ -1,18 +1,20 @@
 #' Title
 #' mapping function like ggplot aes()
 #'
-#' @param x
-#' @param y
-#' @param color
-#' @param size
+#' @param x data mapping for x
+#' @param y data mapping for y
+#' @param color the colorField
+#' @param size the sizeField
 #' @param g
-#' @param shape
+#' @param shape   shapeFiled
 #' @param group
 #'
 #' @return
 #' @export
 #'
 #' @examples
+#' g(data) %>% aes(x,y,color=z) %>% point()
+#'
 aes <- function(g,
                 x,
                 y,

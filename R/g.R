@@ -60,7 +60,7 @@ g <-function(data=NULL,
       gx$autofit <- FALSE
     }
     #
-  if(!is.null(plot_type)){ if (!plot_type %in% c('scatter', 'line','area','heatmap')) {
+  if(!is.null(plot_type)){ if (!plot_type %in% c('scatter', 'line','area','heatmap','pie')) {
     stop ('plot type not supported')
   }}
 g <- htmlwidgets::createWidget(

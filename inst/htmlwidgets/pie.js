@@ -1,6 +1,6 @@
 HTMLWidgets.widget({
 
-  name: 'scatter',
+  name: 'pie',
 
   type: 'output',
 
@@ -19,7 +19,7 @@ HTMLWidgets.widget({
 
         //fetch attributions
         const mapping = x.mapping;
-        const scatterPlot = new G2Plot.Scatter(container ,{
+        const scatterPlot = new G2Plot.Pie(container ,{
           data,
           appendPadding: 30,
           xField: mapping.xField,
@@ -28,11 +28,7 @@ HTMLWidgets.widget({
           color:mapping.color,
           sizeField:mapping.sizeField,
           size:mapping.size,
-          shape:x.style.shape,
-          pointStyle: {
-          fillOpacity: 0.8,
-          strokeOpacity:0
-  },
+          seriesField:mapping.seriesField,
           });
         // render plot
        scatterPlot.render();
