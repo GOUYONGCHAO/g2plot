@@ -4,7 +4,8 @@
 
 #' @param width
 #' @param height
-#'
+#' @examples
+#' g(data) %>% stock() %>% g2plot::aes(x ="trade_date",y = "y")
 #'@export stock
 stock <- function(
   g
