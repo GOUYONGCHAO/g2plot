@@ -32,6 +32,10 @@ data<-data.frame(x=x,y=y,z=z)
 #也可用g()%>% 数据映射函数aes（）%>% 图像类型函数（）%>%其他设置
 g(data) %>% aes(x = "y",y = "x",color='z',size='z') %>% scatter()
 ```
+```r
+g(stock) %>% stock() %>% g2plot::aes(x ="trade_date",y = "y")
+```
+![image](https://github.com/GOUYONGCHAO/g2plot/blob/master/public/image/stock.png)
 
 ## 任务清单 TODO
 - [x] Line：折线图
