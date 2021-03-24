@@ -27,6 +27,16 @@ data<-data.frame(x=x,y=y,z=z)
 #也可用g()%>% 数据映射函数aes（）%>% 图像类型函数（）%>%其他设置
 g(data) %>% aes(x = "y",y = "x",color='z',size='z') %>% scatter()
 ```
+## 任务清单
+###已完成
+
+- [x] Pie：饼图 
+- [x] Scatter:散点图 
+- [x] Line：折线图 
+
+### 未完成  
+- [ ] Column：柱状图
+- [ ] Bar：柱状图
 # 鸣谢
 
 感谢antv团队

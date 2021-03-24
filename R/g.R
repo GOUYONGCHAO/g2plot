@@ -1,15 +1,14 @@
 #' <Add Title>
-#'
+#' g2 function
 #' <Add Description>
-#'
+#' g function ,start a plot
 #' @param width
 #' @param height
 #' @param elementId
-#' @param data
+#' @param data input data
 #' @param main
 #' @param xlab
 #' @param gtype
-#' @param mapping
 #' @param ylab
 #'
 #' @import htmlwidgets

@@ -8,6 +8,16 @@ mapping function like ggplot aes()}
 aes(g, x, y, color = NULL, size = NULL, shape = NULL, group = NULL)
 }
 \arguments{
+\item{x}{data mapping for x}
+
+\item{y}{data mapping for y}
+
+\item{color}{the colorField}
+
+\item{size}{the sizeField}
+
+\item{shape}{shapeFiled}
+
 \item{group}{}
 }
 \value{
@@ -16,4 +26,8 @@ aes(g, x, y, color = NULL, size = NULL, shape = NULL, group = NULL)
 \description{
 Title
 mapping function like ggplot aes()
+}
+\examples{
+g(data) \%>\% aes(x,y,color=z) \%>\% point()
+
 }

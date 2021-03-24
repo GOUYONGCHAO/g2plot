@@ -2,7 +2,10 @@
 % Please edit documentation in R/g.R
 \name{g}
 \alias{g}
-\title{<Add Title>}
+\title{<Add Title>
+g2 function
+<Add Description>
+g function ,start a plot}
 \usage{
 g(
   data = NULL,
@@ -16,8 +19,13 @@ g(
 )
 }
 \arguments{
+\item{data}{input data}
+
 \item{ylab}{}
 }
 \description{
+<Add Title>
+g2 function
 <Add Description>
+g function ,start a plot
 }

@@ -19,19 +19,23 @@ HTMLWidgets.widget({
 
         //fetch attributions
         const mapping = x.mapping;
-        const scatterPlot = new G2Plot.Pie(container ,{
+        const piePlot = new G2Plot.Pie(container ,{
           data,
           appendPadding: 30,
-          xField: mapping.xField,
-          yField: mapping.yField,
+          angleField: mapping.xField,
+         // yField: mapping.yField,
           colorField: mapping.colorField,
-          color:mapping.color,
+          //color:mapping.color,
           sizeField:mapping.sizeField,
           size:mapping.size,
           seriesField:mapping.seriesField,
+          radius:x.style.radius,
+          innerRadius:x.style.innerradius,
+          startAngle:x.style.startangle,
+          endAngle:x.style.endangle,
           });
         // render plot
-       scatterPlot.render();
+      piePlot.render();
       },
 
       resize: function (width, height) {

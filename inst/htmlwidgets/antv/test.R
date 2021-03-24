@@ -88,6 +88,12 @@ if (eval(substitute(is.numeric(dt$a),list(a=x)))){
 is.numeric(dt$z)
 
 data=cbind(a=c(rep("c",100)),dt)
+x<-c(1,2,3,4,5,6)
+data<-data.frame(x=x,y=x)
+
+g(data,plot_type = 'pie') %>%pie(radius = 1 )%>%g2plot::aes(x='x',y='y',color = 'y')
+
+
 
 
 
