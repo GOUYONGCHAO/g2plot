@@ -1,25 +1,35 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: inline
+---
 # g2plot
-AntV g2plot for R
-本包是基于antV的g2plot开发的R,便于R快速使用g2plot进行画图。
+
+AntV g2plot for R 本包是基于antV的g2plot开发的R,便于R快速使用g2plot进行画图。
 
 # g2plot 版本
-目前使用的g2plot版本为2.3.14
+
+目前使用的g2plot版本为2.3.14，详细接口文档请参见：[g2plot官方文档](https://g2plot.antv.vision/zh/docs/manual/introduction)    
 
 # R依赖包
-htmlwidgets
-magrittr
+
+htmlwidgets magrittr
 
 ### 安装包
-```r
+
+``` r
 install.packages("devtools")
 library(devtools)
 devtools::install_github('GOUYONGCHAO/g2plot')
 ```
+
 # 使用说明
+
 包采用和ggplot相似的语法。由于ggplot的实现比较复杂，因此采用`%>%`管道函数进行画图。
 
 ### 画一个散点图
-```r
+
+``` r
 x<--100:100
 y<-x*x*x
 z<-y+x
@@ -27,19 +37,30 @@ data<-data.frame(x=x,y=y,z=z)
 #也可用g()%>% 数据映射函数aes（）%>% 图像类型函数（）%>%其他设置
 g(data) %>% aes(x = "y",y = "x",color='z',size='z') %>% scatter()
 ```
-## 任务清单
-###已完成
 
-- [x] Pie：饼图 
-- [x] Scatter:散点图 
-- [x] Line：折线图 
-
-### 未完成  
+## 任务清单 TODO
+- [x] Line：折线图
+- [x] Area：面积图
 - [ ] Column：柱状图
 - [ ] Bar：柱状图
+- [x] Pie：饼图、环图
+- [x] Scatter:散点、气泡图
+- [x] Heatmap：热力图
+- [ ] Sankey：桑基图
+- [ ] Treemap：矩形树图
+- [ ] Radar：雷达图
+- [ ] BarFunnel：漏斗图
+- [ ] Waterfall：瀑布图
+- [ ] WordCloud：词云图
+- [ ] Histogram：直方图
+- [ ] Sunburst：旭日图
+- [ ] BidirectionalBar：对称条形图
+- [ ] RadialBar：玉珏图
+- [ ] Box：箱型图
+- [ ] Stock：股票图
+
 # 鸣谢
 
 感谢antv团队
 
 感谢Rstudio团队
-
