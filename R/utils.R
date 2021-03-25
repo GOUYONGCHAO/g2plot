@@ -1,6 +1,5 @@
 #save the plot
 save <- function() {
-
 }
 # make sure htmlwidgets:::toJSON() turns list() to {} in JSON, instead of []
 .emptyList <- setNames(list(), character())
@@ -31,7 +30,5 @@ mergeLists <- function (base_list, overlay_list, recursive = TRUE) {
     merged_list
   }
 }
-
-
 ####
 

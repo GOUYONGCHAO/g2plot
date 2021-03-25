@@ -35,6 +35,14 @@ g(data) %>% aes(x = "y",y = "x",color='z',size='z') %>% scatter()
 ```r
 g(stock) %>% stock() %>% g2plot::aes(x ="trade_date",y = "y")
 ```
+## 图形设置
+### legend 图例
+通过添加legend()实现，可以设置legend的位置，类型等等。
+```r
+data<-data.frame(type=c('分类1','分类2','分类3','分类4','分类5','其他'),value=c(1:6))
+g(data,plot_type = 'pie') %>%pie(radius = 1 )%>%g2plot::aes(x='value',y='value',color = 'type') %>%legend(position = 'left',layout = 'vertical')
+```
+
 ![image](https://github.com/GOUYONGCHAO/g2plot/blob/master/public/image/stock.png)
 
 ## 任务清单 TODO
@@ -56,7 +64,7 @@ g(stock) %>% stock() %>% g2plot::aes(x ="trade_date",y = "y")
 - [ ] BidirectionalBar：对称条形图
 - [ ] RadialBar：玉珏图
 - [ ] Box：箱型图
-- [ ] Stock：股票图
+- [x] Stock：股票图
 
 # 鸣谢
 

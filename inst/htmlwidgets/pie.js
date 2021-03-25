@@ -33,6 +33,7 @@ HTMLWidgets.widget({
           innerRadius:x.style.inneradius,
           startAngle:x.style.startangle,
           endAngle:x.style.endangle,
+          legend:x.legend,
           });
         // render plot
       piePlot.render();

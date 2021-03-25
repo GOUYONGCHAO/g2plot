@@ -34,7 +34,10 @@
 #' @export
 #'
 #' @examples
-legend_<-function (g
+#' data<-data.frame(type=c('分类1','分类2','分类3','分类4','分类5','其他'),value=c(1:6))
+#' g(data,plot_type = 'pie') %>%pie(radius = 1 )%>%g2plot::aes(x='value',y='value',color = 'type') %>%legend(position = 'left',layout = 'vertical')
+#'
+legend<-function (g
 ,legend=TRUE
 ,layout			 =NULL    ##						string									horizontal				图例的布局方式，可选项：horizontal | vertical
 ,position		 =NULL    ##		string				-				图例的位置。详见 position 配置
@@ -67,10 +70,10 @@ legend_<-function (g
 ){
   if(!is.null(g)){
     legend<-list()
-    if(!is.null(lenged)){legend$legend<-legend}
+    if(!is.null(legend)){legend$legend<-legend}
     else legend$legend <-TRUE
     if(!is.null(layout)){
-      if(!layout%in% c('horizontal')){stop('layout must be "horizontal" or "vertical" ')}
+      if(!layout%in% c('horizontal','vertical')){stop('layout must be "horizontal" or "vertical" ')}
        legend$layout <-layout
     }
      if(!is.null(position)){
