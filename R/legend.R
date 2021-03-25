@@ -70,11 +70,11 @@ legend_<-function (g
     if(!is.null(lenged)){legend$legend<-legend}
     else legend$legend <-TRUE
     if(!is.null(layout)){
-      if(layout ! %in% c('horizontal')){stop('layout must be "horizontal" or "vertical" ')}
+      if(!layout%in% c('horizontal')){stop('layout must be "horizontal" or "vertical" ')}
        legend$layout <-layout
     }
      if(!is.null(position)){
-      if(position ! %in% c('top','top-left','top-right','right','right-top','right-bottom','left','left-top','left-bottom','bottom','bottom-left','bottom-right'))
+      if(!position%in% c('top','top-left','top-right','right','right-top','right-bottom','left','left-top','left-bottom','bottom','bottom-left','bottom-right'))
       {
         stop("position must be 'top','top-left','top-right','right','right-top','right-bottom','left','left-top','left-bottom','bottom','bottom-left','bottom-right")}
         legend$position <-position

@@ -41,37 +41,37 @@ label<-function(g
   # initial label
   label<-list()
   # offset
-  if(!is.null(offset)){ 
-    if(!is.numeric(offset){
+  if(!is.null(offset)){
+    if(!is.numeric(offset)){
       stop("offset must be numeric")
       }else {
      label$offset<-offset
     }
   }
   # offsetX
-  if(!is.null(offsetX)){ 
-  if(!is.numeric(offsetX){
+  if(!is.null(offsetX)){
+  if(!is.numeric(offsetX)){
     stop("offsetX must be numeric")
   }else {
      label$offsetX<-offsetX
   }}
   #offsetY
-    if(!is.null(offsetY)){ 
-  if(!is.numeric(offsetY){
+    if(!is.null(offsetY)){
+  if(!is.numeric(offsetY)){
     stop("offsetY must be numeric")
   }else {
      label$offsetY<-offsetY
   }}
   #autoRotate
-  if(!is.null(autoRotate)){ 
-  if(!is.boolean(autoRotate){
+  if(!is.null(autoRotate)){
+  if(!is.boolean(autoRotate)){
     stop("offsetY must be boolean")
   }else {
      label$autoRotate<-autoRotate
   }}
   # rotate
-  if(!is.null(rotate)){ 
-  if(!is.numeric(rotate){
+  if(!is.null(rotate)){
+  if(!is.numeric(rotate)){
     stop("rotate must be numeric")
   }else {
      label$rotate<-rotate
@@ -86,15 +86,13 @@ label<-function(g
   }
 # type @TODO
   if(!is.null(type)){
-    if(!type%in% c("top","bottom","left","right"))
-   { stop("type must be 'top','bottom','left','right'")
+    if(!type%in% c("top","bottom","left","right")){ stop("type must be 'top','bottom','left','right'")
   }else {
      label$type<-type
   }
   }
 # layout
-  if(!is.null(layout)){
-  if(!layout%in% c("overlap","fixedOverlap" ,"limitInShape")){
+  if(!is.null(layout)){if(!layout %in% c("overlap","fixedOverlap" ,"limitInShape")){
     stop("layout must be 'overlap','fixedOverlap','limitInShape'")
   }
   else {
@@ -105,6 +103,6 @@ label<-function(g
   g$x$label<- mergeLists(g$x$label, label)
   #return g
   g
-}   
+}
 
  ##

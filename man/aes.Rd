@@ -5,7 +5,7 @@
 \title{Title
 mapping function like ggplot aes()}
 \usage{
-aes(g, x, y, color = NULL, size = NULL, shape = NULL, group = NULL)
+aes(g, x, y = NULL, color = NULL, size = NULL, shape = NULL, group = NULL)
 }
 \arguments{
 \item{x}{data mapping for x}
