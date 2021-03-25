@@ -28,6 +28,8 @@ HTMLWidgets.widget({
           yField:mapping.yField,
           colorField: mapping.colorField,
           color:mapping.color,
+          theme:x.theme,
+          label:x.label,
           });
         // render plot
        stockPlot.render();

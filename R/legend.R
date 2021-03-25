@@ -34,10 +34,11 @@
 #' @export
 #'
 #' @examples
-g2legend_<-function (g2plot
+legend_<-function (g
+,legend=TRUE
 ,layout			 =NULL    ##						string									horizontal				图例的布局方式，可选项：horizontal | vertical
-,title			=NULL      ## object				-				图例标题配置，默认不展示。详见 title 配置
 ,position		 =NULL    ##		string				-				图例的位置。详见 position 配置
+,title			=NULL      ## object				-				图例标题配置，默认不展示。详见 title 配置
 ,offsetX		=NULL      ##	number				-				图例 x 方向的偏移。
 ,offsetY		=NULL      ##	number				-				图例 y 方向的偏移。
 ,background	 =NULL    ##			object				-				背景框配置项。详见 background 配置
@@ -64,5 +65,23 @@ g2legend_<-function (g2plot
 ,custom		   =NULL    ##		boolean				false				是否为自定义图例，当该属性为 true 时，需要声明 items 属性。
 ,items			 =NULL      ##	 object[]				-				用户自己配置图例项的内容。详见 items 配置        ##
 ){
-  g2plot
+  if(!is.null(g)){
+    legend<-list()
+    if(!is.null(lenged)){legend$legend<-legend}
+    else legend$legend <-TRUE
+    if(!is.null(layout)){
+      if(layout ! %in% c('horizontal')){stop('layout must be "horizontal" or "vertical" ')}
+       legend$layout <-layout
+    }
+     if(!is.null(position)){
+      if(position ! %in% c('top','top-left','top-right','right','right-top','right-bottom','left','left-top','left-bottom','bottom','bottom-left','bottom-right'))
+      {
+        stop("position must be 'top','top-left','top-right','right','right-top','right-bottom','left','left-top','left-bottom','bottom','bottom-left','bottom-right")}
+        legend$position <-position
+    }
+g$x$legend<- mergeLists(g$x$legend, legend)
+# return g
+g
+  }
+
 }

@@ -29,6 +29,8 @@ HTMLWidgets.widget({
           sizeField:mapping.sizeField,
           size:mapping.size,
           seriesField:mapping.seriesField,
+          theme:x.theme,
+          label:x.label,
           });
         // render plot
        scatterPlot.render();

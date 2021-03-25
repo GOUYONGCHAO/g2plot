@@ -2,7 +2,6 @@
 
 #' @param g
 #'
-#' @param mapping
 #' @param width
 #' @param height
 #'

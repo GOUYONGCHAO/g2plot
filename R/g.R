@@ -48,7 +48,7 @@ g <-function(data=NULL,
     gx$axis$xtitle<-xlab
     gx$axis$ytitle<-ylab
     gx$tootips <- list()
-    gx$labels <- list()
+    gx$label <- list()
     gx$legend <- list()
     gx$annotation <- list()
     gx$events <- list()
