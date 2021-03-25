@@ -1,11 +1,11 @@
 #' Title
-#' mapping function like ggplot aes()
+#' mapping function just like ggplot's aes().
 #'
 #' @param x data mapping for x
 #' @param y data mapping for y
 #' @param color the colorField
 #' @param size the sizeField
-#' @param g
+#' @param g g2plot object
 #' @param shape   shapeFiled
 #' @param group
 #'
@@ -13,14 +13,15 @@
 #' @export
 #'
 #' @examples
-#' g(data) %>% aes(x,y,color=z) %>% point()
+#' g(data)  %>% point()%>% aes(x,y,color=z)
 #'
 aes <- function(g,
                 x,
                 y=NULL,
                 color = NULL,
                 size = NULL,
-                shape = NULL,group = NULL) {
+                shape = NULL,group = NULL
+                ) {
   mapping <- list()
   meta<-list()
   if (!is.null(x)) {

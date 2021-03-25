@@ -1,7 +1,7 @@
-#' Title
+#' Title Legend settings for g2plot
 #'
-#' @param g2plot
-#' @param layout
+#' @param g object for g2plot
+#' @param layout layout for legend
 #' @param title
 #' @param position
 #' @param offsetX
@@ -36,7 +36,7 @@
 #' @examples
 #' data<-data.frame(type=c('分类1','分类2','分类3','分类4','分类5','其他'),value=c(1:6))
 #' g(data,plot_type = 'pie') %>%pie(radius = 1 )%>%g2plot::aes(x='value',y='value',color = 'type') %>%legend(position = 'left',layout = 'vertical')
-#'
+#' @export
 legend<-function (g
 ,legend=TRUE
 ,layout			 =NULL    ##						string									horizontal				图例的布局方式，可选项：horizontal | vertical
@@ -82,6 +82,25 @@ legend<-function (g
         stop("position must be 'top','top-left','top-right','right','right-top','right-bottom','left','left-top','left-bottom','bottom','bottom-left','bottom-right")}
         legend$position <-position
     }
+    #title
+     if(!is.null(title)){
+        legend$title <-title
+    }
+    # offsetX
+  if(!is.null(offsetX)){
+  if(!is.numeric(offsetX)){
+    stop("offsetX must be numeric")
+  }else {
+     label$offsetX<-offsetX
+  }}
+  #offsetY
+    if(!is.null(offsetY)){
+  if(!is.numeric(offsetY)){
+    stop("offsetY must be numeric")
+  }else {
+     label$offsetY<-offsetY
+  }}
+
 g$x$legend<- mergeLists(g$x$legend, legend)
 # return g
 g

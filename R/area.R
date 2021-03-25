@@ -1,6 +1,6 @@
 
 
-#' @param g
+#' @param g 
 
 #' @param width
 #' @param height

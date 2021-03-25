@@ -1,9 +1,9 @@
 #' <Add Title>
-#' g2 function
+#' g2plot function
 #' <Add Description>
-#' g function ,start a plot
-#' @param width
-#' @param height
+#' g function ,start a plot with g(),also use pipe(%>%) as data transfer.
+#' @param width the width of the plot
+#' @param height the height of the plot
 #' @param elementId
 #' @param data input data
 #' @param main
@@ -12,11 +12,14 @@
 #' @param ylab
 #'
 #' @import htmlwidgets
+#' @import magrittr
+#' @export g
+#' @export g2r
+#' @export g2plots
 #'
-#' @export
 #'
-#'
-g <-function(data=NULL,
+g <-function(
+           data,
            plot_type = NULL,
            main = NULL,
            xlab = NULL,
@@ -25,16 +28,21 @@ g <-function(data=NULL,
            width = NULL,
            height = NULL)
   {
+    
     gx <- list()
-    if (!is.matrix(data) && !is.data.frame(data) && is.list(data)) {
+    if(!is.null(data)){ 
+      if (!is.matrix(data) && !is.data.frame(data) && is.list(data)) {
       stop("Data type not supported yet")
-    }
-    gx$data <- data
+     }else{  
+      names(data) <- NULL
+      gx$data <- data
     # create x (dygraph attrs + some side data)
     # add data (strip names first so we marshall as a 2d array)
-    names(data) <- NULL
+    } else{
+    stop('data is null')
+    }
+    }
     #constuct x
-    gx$aes<-list()
     gx$attrs <- list()
     if (!is.null(plot_type)){ gx$attrs$plotType<-plot_type }
     gx$attrs$title <- main
@@ -108,3 +116,6 @@ renderG <-
     } # force quoted
     htmlwidgets::shinyRenderWidget(expr, gOutput, env, quoted = TRUE)
   }
+
+g2plot<-g()
+g2r<-g()
