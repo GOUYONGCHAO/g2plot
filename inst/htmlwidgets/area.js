@@ -29,6 +29,11 @@ HTMLWidgets.widget({
           sizeField:mapping.sizeField,
           size:mapping.size,
           seriesField:mapping.seriesField,
+          theme:x.theme,
+          label:x.label,
+          xAxis:x.xAxis,
+          yAxis:x.yAxis,
+          legend:x.legend,
           });
         // render plot
        scatterPlot.render();

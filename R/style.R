@@ -138,7 +138,7 @@ textstyle
 # shadowOffsetY	number	设置阴影距图形的垂直距离
 # cursor	string	鼠标样式。同 css 的鼠标样式，默认 'default'。
 
-#' Title
+#' shape style settings
 #'
 #' @param fill
 #' @param r
@@ -191,8 +191,7 @@ shapestyle$cursor <- cursor
 # return
 shapestyle
 }
-#label sytle function
-#' Title
+#'label sytle function
 #'
 #' @param type
 #' @param offset

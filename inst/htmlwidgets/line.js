@@ -32,6 +32,8 @@ HTMLWidgets.widget({
           theme:x.theme,
           label:x.label,
           xAxis:x.xAxis,
+          yAxis:x.yAxis,
+          legend:x.legend,
           });
         // render plot
        scatterPlot.render();

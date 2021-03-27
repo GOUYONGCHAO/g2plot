@@ -8,9 +8,13 @@ g(data,plot_type = 'scatter') %>% aes(x = "Revenue (Millions)",y = "Rating",colo
 #line
 title<-title(text='this is title',offset = 100,spacing = 100,style = NULL,autoRotate = TRUE)
 data<-fromJSON('https://gw.alipayobjects.com/os/bmw-prod/55424a73-7cb8-4f79-b60d-3ab627ac5698.json')
-
-g(data) %>% line()%>% aes(x = "year",y = "value",group ='category')  %>% xAxis(position='bottom',tickMethod='cat',tickCount = 5,title = title)
+dt<-data[1:500,]
+g(dt) %>% line()%>% aes(x = "year",y = "value",group ='category')  %>% xAxis(position='bottom',tickMethod='cat',tickCount = 5,title = title)%>% yAxis(position='right',tickMethod='cat',tickCount = 10,title = title) %>%legend(position = 'right')
 g(data,plot_type = 'line') %>% aes(x = "year",y = "value",group='category')
+g2r(data = dt)%>% line()%>% aes(x = "year",y = "value",group ='category')  %>% xAxis(position='bottom',tickMethod='cat',tickCount = 5,title = title)%>% yAxis(position='right',tickMethod='cat',tickCount = 10,title = title) %>%legend(position = 'right')
+
+
+
 #area
 data<-fromJSON('https://gw.alipayobjects.com/os/bmw-prod/360c3eae-0c73-46f0-a982-4746a6095010.json')
 g(data) %>% area()%>% aes(x = "timePeriod",y = "value")
@@ -30,11 +34,26 @@ data$trade_date<-as.Date(data$trade_date)
 g(data,plot_type = 'stock') %>% g2plot::aes(x ="trade_date",y = "y")
 g(data) %>% stock(open = "close",close = 'open',high = "high",low = 'low') %>% g2plot::aes(x ="trade_date",y = "y")
 g(data) %>% stock() %>% g2plot::aes(x ="trade_date",y = "y")
-library(g2plot)
-viewer(data)
-data
-View(data)
+
 #line
 data<-fromJSON( 'https://gw.alipayobjects.com/os/bmw-prod/1d565782-dde4-4bb6-8946-ea6a38ccf184.json')
+g2r(data = data)
 
+missing(x)
+
+
+
+
+tooltip<-function(position	=c("top","bottom","left","right")       ##
+              ){
+  x<-list()
+  if(!missing(position)){
+    x$position<-position
+  }
+else x$y<-position
+  x
+}    ##
+tooltip(position = )
+
+tooltip(position =c('top','left'))
 

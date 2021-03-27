@@ -4,7 +4,13 @@
 \alias{title}
 \title{Title setting for axis}
 \usage{
-title(text, offset, spacing, style, autoRotate)
+title(
+  text = NULL,
+  offset = NULL,
+  spacing = NULL,
+  style = NULL,
+  autoRotate = NULL
+)
 }
 \arguments{
 \item{text}{text content for xAxis}

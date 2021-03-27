@@ -1,5 +1,6 @@
 
 
+#' Stock plot
 #' @param gWidget
 
 #' @param width
