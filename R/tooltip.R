@@ -1,3 +1,4 @@
+
 tooltip<-function(g
                   ,title
                   ,fields	               ##      string	当用户使用了自定义的 label 类型，需要声明具体的 type 类型，否则会使用默认的 label 类型渲染（饼图 label 支持 inner|outer|spider）
@@ -32,3 +33,4 @@ tooltip<-function(g
   #return g
   g
 }    ##
+

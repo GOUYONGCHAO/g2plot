@@ -1,6 +1,8 @@
 theme<-function(g
 ,theme='dark'
 ,fontFamily=NULL
+,color10 = NULL
+,color20=NUll
 ,backgroundColor=NULL
 ,brandColor=NULL
 ,paletteQualitative10=NULL
@@ -30,3 +32,4 @@ theme<-function(g
 # return g
 g
 }
+
