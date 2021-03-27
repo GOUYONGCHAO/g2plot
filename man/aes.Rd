@@ -5,11 +5,17 @@
 \title{Title
 mapping function just like ggplot's aes().}
 \usage{
-aes(g, x, y = NULL, color = NULL, size = NULL, shape = NULL, group = NULL)
+aes(
+  gWidget,
+  x,
+  y = NULL,
+  color = NULL,
+  size = NULL,
+  shape = NULL,
+  group = NULL
+)
 }
 \arguments{
-\item{g}{g2plot object}
-
 \item{x}{data mapping for x}
 
 \item{y}{data mapping for y}
@@ -21,6 +27,8 @@ aes(g, x, y = NULL, color = NULL, size = NULL, shape = NULL, group = NULL)
 \item{shape}{shapeFiled}
 
 \item{group}{}
+
+\item{g}{g2plot object}
 }
 \value{
 

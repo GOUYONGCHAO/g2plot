@@ -30,6 +30,7 @@ HTMLWidgets.widget({
           color:mapping.color,
           theme:x.theme,
           label:x.label,
+          xAxis:x.xAixs,
           });
         // render plot
        stockPlot.render();

@@ -1,5 +1,16 @@
 
 # linestyle function
+#' @param stroke
+#'
+#' @param lineWidth
+#' @param lineDash
+#' @param opacity
+#' @param shadowColor
+#' @param shadowBlur
+#' @param shadowOffsetX
+#' @param shadowOffsetY
+#' @param cursor
+#'
 #'@export
 linestyle<-function(
 stroke=NULL
@@ -48,6 +59,26 @@ pointstyle<-function(){
 # shadowOffsetX	number	设置阴影距文字的水平距离
 # shadowOffsetY	number	设置阴影距文字的垂直距离
 # cursor	string	鼠标样式。同 css 的鼠标样式,默认 'default'。
+#' @param fontSize
+#'
+#' @param fontFamily
+#' @param fontWeight
+#' @param lineHeight
+#' @param textAlign
+#' @param textBaseline
+#' @param fill
+#' @param fillOpacity
+#' @param stroke
+#' @param lineWidth
+#' @param lineDash
+#' @param lineOpacity
+#' @param opacity
+#' @param shadowColor
+#' @param shadowBlur
+#' @param shadowOffsetX
+#' @param shadowOffsetY
+#' @param cursor
+#'
 #'@export
 textstyle<-function(
 fontSize=NULL
@@ -107,7 +138,29 @@ textstyle
 # shadowOffsetY	number	设置阴影距图形的垂直距离
 # cursor	string	鼠标样式。同 css 的鼠标样式，默认 'default'。
 
-shapestyle<- function(fill,r = NULL
+#' Title
+#'
+#' @param fill
+#' @param r
+#' @param fillOpacity
+#' @param stroke
+#' @param lineWidth
+#' @param lineDash
+#' @param lineOpacity
+#' @param opacity
+#' @param shadowColor
+#' @param strokeOpacity
+#' @param shadowBlur
+#' @param shadowOffsetX
+#' @param shadowOffSetY
+#' @param cursor
+#'
+#' @return
+#' @export
+#'
+#' @examples
+shapestyle<- function(fill=NULL
+,r = NULL
 ,fillOpacity=NULL
 ,stroke=NULL
 ,lineWidth=NULL
@@ -138,36 +191,57 @@ shapestyle$cursor <- cursor
 # return
 shapestyle
 }
-
 #label sytle function
+#' Title
+#'
+#' @param type
+#' @param offset
+#' @param offsetX
+#' @param offsetY
+#' @param content
+#' @param style
+#' @param autoRotate
+#' @param rotate
+#' @param labelLine
+#' @param labelEmit
+#' @param layout
+#' @param position
+#' @param animate
+#' @param formatter
+#' @param autoHide
+#'
+#' @return
+#' @export
+#'
+#' @examples
 labelstyle<-function(
-  type	=NULL
-,offset	 =NULL     
-,offsetX  =NULL   	
+type	=NULL
+,offset	 =NULL
+,offsetX  =NULL
 ,offsetY     =NULL
 ,content   =NULL
-,style	 =NULL 
+,style	 =NULL
 ,autoRotate=NULL
 ,rotate= NULL
-,labelLine= NULL	
-,labelEmit= NULL	
+,labelLine= NULL
+,labelEmit= NULL
 ,layout	=NULL       ##
 ,position	=NULL
 ,animate=NULL      ##       boolean
-,formatter=NULL    ##	
+,formatter=NULL    ##
 ,autoHide	=NULL
 )
 {
 labelstyle<-list()
-labelstyle$offset	<-offset  
-labelstyle$offsetX   <-offsetX   	
-labelstyle$offsetY     <-offsetY 
+labelstyle$offset	<-offset
+labelstyle$offsetX   <-offsetX
+labelstyle$offsetY     <-offsetY
 labelstyle$content    <-content
-labelstyle$style	  <-style  
+labelstyle$style	  <-style
 labelstyle$autoRotate <-autoRotate
 labelstyle$rotate <-rotate
-labelstyle$labelLine <-labelLine	
-labelstyle$labelEmit <-labelEmit	
+labelstyle$labelLine <-labelLine
+labelstyle$labelEmit <-labelEmit
 labelstyle$layout	 <-layout
 labelstyle$position	 <-position
 labelstyle$animate <-animate

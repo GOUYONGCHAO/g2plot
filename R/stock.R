@@ -8,7 +8,7 @@
 #' g(data) %>% stock() %>% g2plot::aes(x ="trade_date",y = "y")
 #'@export stock
 stock <- function(
-  gWidget
+   gWidget
   ,width=NULL
   ,height=NULL
   ,open='open'
@@ -23,6 +23,6 @@ stock <- function(
   ){  gWidget$x$mapping$yField<-c(open,close,high,low)
   }
   sizingPolicy <-htmlwidgets::sizingPolicy(viewer.padding = 10, browser.fill = TRUE)
-  attr(ggWidget"class")<-c("stock",if (sizingPolicy$viewer$suppress) "suppress_viewer","htmlwidget")
+  attr(gWidget,"class")<-c("stock",if (sizingPolicy$viewer$suppress) "suppress_viewer","htmlwidget")
   gWidget
 }

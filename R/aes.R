@@ -32,9 +32,14 @@ aes <- function(gWidget,
   }
   if (!is.null(y)) {
     switch (gWidget$x$attrs$plotType,
+           # stock
             stock ={
               if(is.null(gWidget$x$mapping$yField))
                 {mapping$yField <- c('open', 'close', 'high', 'low')}
+            },
+            #
+            line ={
+            mapping$yField <-y
             },
             {
             mapping$yField <- y
@@ -71,6 +76,6 @@ aes <- function(gWidget,
   gWidget$x$mapping <- mergeLists(gWidget$x$mapping, mapping)
   #merge mapping
   gWidget$x$meta <- mergeLists(gWidget$x$meta, meta)
-  #return g
+  #return gWidget
   gWidget
 }

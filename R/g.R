@@ -2,20 +2,22 @@
 #' g2plot function
 #' <Add Description>
 #' g function ,start a plot with g(),also use pipe(%>%) as data transfer.
+#'
 #' @param width the width of the plot
 #' @param height the height of the plot
 #' @param elementId
 #' @param data input data
 #' @param main
 #' @param xlab
-#' @param gtype
 #' @param ylab
+#' @param plot_type
 #'
 #' @import htmlwidgets
 #' @import magrittr
+#'
 #' @export g
 #' @export g2r
-#' @export g2plots
+#' @export g2plot
 #'
 #'
 g <-function(data,
@@ -30,13 +32,12 @@ g <-function(data,
 
     gx <- list()
     if(!is.null(data)){
-      if (!is.matrix(data) && !is.data.frame(data) && is.list(data)) {
+      if (!(is.matrix(data) | is.data.frame(data) | is.list(data))) {
       stop("Data type not supported yet")
      }else{
-      names(data) <- NULL
+      # add data (strip names first so we marshall as a 2d array)
+      # names(data) <- NULL
       gx$data <- data
-    # create x (dygraph attrs + some side data)
-    # add data (strip names first so we marshall as a 2d array)
     }}
       else {
     stop('data is null')

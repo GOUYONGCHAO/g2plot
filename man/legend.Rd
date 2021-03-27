@@ -5,7 +5,7 @@
 \title{Title Legend settings for g2plot}
 \usage{
 legend(
-  g,
+  gWidget,
   legend = TRUE,
   layout = NULL,
   position = NULL,
@@ -38,7 +38,7 @@ legend(
 )
 }
 \arguments{
-\item{g}{object for g2plot}
+\item{gWidget}{object for g2plot}
 
 \item{layout}{layout for legend}
 

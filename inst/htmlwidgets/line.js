@@ -31,6 +31,7 @@ HTMLWidgets.widget({
           seriesField:mapping.seriesField,
           theme:x.theme,
           label:x.label,
+          xAxis:x.xAxis,
           });
         // render plot
        scatterPlot.render();

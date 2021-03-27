@@ -21,7 +21,7 @@ g(
 \arguments{
 \item{data}{input data}
 
-\item{ylab}{}
+\item{plot_type}{}
 
 \item{width}{the width of the plot}
 

@@ -5,7 +5,7 @@
 \title{Title label settings for g2plot}
 \usage{
 label(
-  g,
+  gWidget,
   type,
   offset = NULL,
   offsetX = NULL,
@@ -24,11 +24,11 @@ label(
 )
 }
 \arguments{
-\item{g}{object for g2plot}
-
 \item{type}{当用户使用了自定义的 label 类型，需要声明具体的 type 类型，否则会使用默认的 label 类型渲染（饼图 label 支持 inner|outer|spider）}
 
 \item{autoHide}{}
+
+\item{g}{object for g2plot}
 }
 \value{
 

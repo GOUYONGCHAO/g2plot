@@ -11,6 +11,7 @@ line <- function(
     ,width=NULL
     ,height=NULL
 ) {
+gWidget$x$attrs$plotType<-"line"
 gWidget$width<-width
 gWidget$height<-height
 sizingPolicy <-htmlwidgets::sizingPolicy(viewer.padding = 10, browser.fill = TRUE)
