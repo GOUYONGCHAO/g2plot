@@ -2,7 +2,7 @@
 % Please edit documentation in R/legend.R
 \name{legend}
 \alias{legend}
-\title{Title}
+\title{Title Legend settings for g2plot}
 \usage{
 legend(
   g,
@@ -38,11 +38,19 @@ legend(
 )
 }
 \arguments{
+\item{g}{object for g2plot}
+
+\item{layout}{layout for legend}
+
 \item{items}{}
 }
 \value{
 
 }
 \description{
-Title
+Title Legend settings for g2plot
+}
+\examples{
+data<-data.frame(type=c('分类1','分类2','分类3','分类4','分类5','其他'),value=c(1:6))
+g(data,plot_type = 'pie') \%>\%pie(radius = 1 )\%>\%g2plot::aes(x='value',y='value',color = 'type') \%>\%legend(position = 'left',layout = 'vertical')
 }

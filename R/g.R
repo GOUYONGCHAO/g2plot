@@ -18,8 +18,7 @@
 #' @export g2plots
 #'
 #'
-g <-function(
-           data,
+g <-function(data,
            plot_type = NULL,
            main = NULL,
            xlab = NULL,
@@ -28,19 +27,19 @@ g <-function(
            width = NULL,
            height = NULL)
   {
-    
+
     gx <- list()
-    if(!is.null(data)){ 
+    if(!is.null(data)){
       if (!is.matrix(data) && !is.data.frame(data) && is.list(data)) {
       stop("Data type not supported yet")
-     }else{  
+     }else{
       names(data) <- NULL
       gx$data <- data
     # create x (dygraph attrs + some side data)
     # add data (strip names first so we marshall as a 2d array)
-    } else{
+    }}
+      else {
     stop('data is null')
-    }
     }
     #constuct x
     gx$attrs <- list()
@@ -71,7 +70,7 @@ g <-function(
   if(!is.null(plot_type)){ if (!plot_type %in% c('scatter', 'line','area','heatmap','pie','stock')) {
     stop ('Plot type not supported')
   }}
-g <- htmlwidgets::createWidget(
+gWidget <- htmlwidgets::createWidget(
         name = plot_type,
         x = gx,
         width = width,
@@ -79,7 +78,7 @@ g <- htmlwidgets::createWidget(
         htmlwidgets::sizingPolicy(viewer.padding = 10, browser.fill = TRUE),
         package = 'g2plot',
         elementId = elementId)
-g
+gWidget
     }
 #' Shiny bindings for g2plot
 #'
@@ -117,5 +116,5 @@ renderG <-
     htmlwidgets::shinyRenderWidget(expr, gOutput, env, quoted = TRUE)
   }
 
-g2plot<-g()
-g2r<-g()
+g2plot<-g
+g2r<-g

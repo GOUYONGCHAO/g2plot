@@ -8,13 +8,13 @@
 #'
 #'@export scatter
 scatter <- function(
-    g
+    gWidget
     ,width=NULL
     ,height=NULL
     ,shape=NULL
 ) {
-g$width<-width
-g$height<-height
+gWidget$width<-width
+gWidget$height<-height
 style<-list()
 #shape default "circle"
 if(is.null(shape)){style$shape<-'circle'}
@@ -40,10 +40,10 @@ else{
   stop("shape is not support")}
   else{style$shape<-shape}
 }
-g$x$style <- mergeLists(g$x$style, style)
+gWidget$x$style <- mergeLists(gWidget$x$style, style)
 sizingPolicy <-htmlwidgets::sizingPolicy(viewer.padding = 10, browser.fill = TRUE)
-attr(g,"class")<-c("scatter",if (sizingPolicy$viewer$suppress) "suppress_viewer","htmlwidget")
-g
+attr(gWidget,"class")<-c("scatter",if (sizingPolicy$viewer$suppress) "suppress_viewer","htmlwidget")
+gWidget
 }
 
 

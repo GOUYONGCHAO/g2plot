@@ -3,11 +3,13 @@
 \name{aes}
 \alias{aes}
 \title{Title
-mapping function like ggplot aes()}
+mapping function just like ggplot's aes().}
 \usage{
 aes(g, x, y = NULL, color = NULL, size = NULL, shape = NULL, group = NULL)
 }
 \arguments{
+\item{g}{g2plot object}
+
 \item{x}{data mapping for x}
 
 \item{y}{data mapping for y}
@@ -25,9 +27,9 @@ aes(g, x, y = NULL, color = NULL, size = NULL, shape = NULL, group = NULL)
 }
 \description{
 Title
-mapping function like ggplot aes()
+mapping function just like ggplot's aes().
 }
 \examples{
-g(data) \%>\% aes(x,y,color=z) \%>\% point()
+g(data)  \%>\% point()\%>\% aes(x,y,color=z)
 
 }

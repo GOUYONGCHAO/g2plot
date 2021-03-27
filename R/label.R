@@ -21,7 +21,7 @@
 #' @export
 #'
 #' @examples
-label<-function(g
+label<-function(gWidget
                   ,type	               ##      string	当用户使用了自定义的 label 类型，需要声明具体的 type 类型，否则会使用默认的 label 类型渲染（饼图 label 支持 inner|outer|spider）
                   ,offset=NULL	       ##       number	label 的偏移量
                   ,offsetX=NULL     ##       number	label 相对于数据点在 X 方向的偏移距离
@@ -100,9 +100,9 @@ label<-function(g
   }
   }
   #merge g and label
-  g$x$label<- mergeLists(g$x$label, label)
+  gWidget$x$label<- mergeLists(gWidget$x$label, label)
   #return g
-  g
+  gWidget
 }
 
  ##

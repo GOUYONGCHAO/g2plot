@@ -1,5 +1,5 @@
 
-tooltip<-function(g
+tooltip<-function(gWidget
                   ,title
                   ,fields	               ##      string	当用户使用了自定义的 label 类型，需要声明具体的 type 类型，否则会使用默认的 label 类型渲染（饼图 label 支持 inner|outer|spider）
                   ,formatter=NULL	       ##       number	label 的偏移量
@@ -29,8 +29,8 @@ tooltip<-function(g
   if(!layout%in% c("overlap","fixedOverlap" ,"limitInShape")){
     stop("layout must be 'overlap','fixedOverlap','limitInShape'")
   }
-  g$tooltip<-mergeLists(g$tooltip,tooltip)
+  gWidget$x$tooltip<-mergeLists(gWidget$x$tooltip,tooltip)
   #return g
-  g
+  gWidget
 }    ##
 

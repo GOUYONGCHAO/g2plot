@@ -2,7 +2,7 @@
 % Please edit documentation in R/label.R
 \name{label}
 \alias{label}
-\title{Title label for plot}
+\title{Title label settings for g2plot}
 \usage{
 label(
   g,
@@ -34,5 +34,5 @@ label(
 
 }
 \description{
-Title label for plot
+Title label settings for g2plot
 }

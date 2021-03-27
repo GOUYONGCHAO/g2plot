@@ -1,6 +1,6 @@
 #' Title Legend settings for g2plot
 #'
-#' @param g object for g2plot
+#' @param gWidget object for g2plot
 #' @param layout layout for legend
 #' @param title
 #' @param position
@@ -37,7 +37,7 @@
 #' data<-data.frame(type=c('分类1','分类2','分类3','分类4','分类5','其他'),value=c(1:6))
 #' g(data,plot_type = 'pie') %>%pie(radius = 1 )%>%g2plot::aes(x='value',y='value',color = 'type') %>%legend(position = 'left',layout = 'vertical')
 #' @export
-legend<-function (g
+legend<-function (gWidget
 ,legend=TRUE
 ,layout			 =NULL    ##						string									horizontal				图例的布局方式，可选项：horizontal | vertical
 ,position		 =NULL    ##		string				-				图例的位置。详见 position 配置
@@ -68,7 +68,7 @@ legend<-function (g
 ,custom		   =NULL    ##		boolean				false				是否为自定义图例，当该属性为 true 时，需要声明 items 属性。
 ,items			 =NULL      ##	 object[]				-				用户自己配置图例项的内容。详见 items 配置        ##
 ){
-  if(!is.null(g)){
+  if(!is.null(gWidget)){
     legend<-list()
     if(!is.null(legend)){legend$legend<-legend}
     else legend$legend <-TRUE
@@ -101,9 +101,9 @@ legend<-function (g
      label$offsetY<-offsetY
   }}
 
-g$x$legend<- mergeLists(g$x$legend, legend)
+gWidget$x$legend<- mergeLists(gWidget$x$legend, legend)
 # return g
-g
+gWidget
   }
 
 }

@@ -1,13 +1,13 @@
 
 
-#' @param g
+#' @param gWidget
 
 #' @param width
 #' @param height
 #'
 #'@export pie
 pie <- function(
-    g
+    gWidget
     ,width=NULL
     ,height=NULL
     ,radius=NULL
@@ -21,11 +21,11 @@ pie <- function(
     style$innerradius<-innerradius
     style$startangle<-startangle
     style$endangle<-endangle
-    g$x$style <- mergeLists( g$x$style, style)
+    gWidget$x$style <- mergeLists( gWidget$x$style, style)
   }
-g$width<-width
-g$height<-height
+gWidget$width<-width
+gWidget$height<-height
 sizingPolicy <-htmlwidgets::sizingPolicy(viewer.padding = 10, browser.fill = TRUE)
-attr(g,"class")<-c("pie",if (sizingPolicy$viewer$suppress) "suppress_viewer","htmlwidget")
-g
+attr(gWidget,"class")<-c("pie",if (sizingPolicy$viewer$suppress) "suppress_viewer","htmlwidget")
+gWidget
 }

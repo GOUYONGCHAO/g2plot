@@ -1,4 +1,4 @@
-theme<-function(g
+theme<-function(gWidget
 ,theme='dark'
 ,fontFamily=NULL
 ,color10 = NULL
@@ -8,7 +8,7 @@ theme<-function(g
 ,paletteQualitative10=NULL
 ,paletteQualitative20=NULL,
 ...){
-  if (!is.null(g)) {
+  if (!is.null(gWidget)) {
      theme<-list()
      if(!is.null(theme)){theme$theme<-theme}
      else theme$theme<-'dark'
@@ -27,9 +27,9 @@ theme<-function(g
      if(!is.null(paletteQualitative20)){
        theme$paletteQualitative20=paletteQualitative20
      }
-    g$x$theme<-mergeLists(g$x$theme, theme)
+    gWidget$x$theme<-mergeLists(gWidget$x$theme, theme)
   }
 # return g
-g
+gWidget
 }
 

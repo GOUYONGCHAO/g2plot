@@ -15,7 +15,7 @@
 #' @examples
 #' g(data)  %>% point()%>% aes(x,y,color=z)
 #'
-aes <- function(g,
+aes <- function(gWidget,
                 x,
                 y=NULL,
                 color = NULL,
@@ -26,28 +26,28 @@ aes <- function(g,
   meta<-list()
   if (!is.null(x)) {
     mapping$xField <- x
-    if(is.numeric(eval(substitute(g$x$data$a,list(a=x))))){
+    if(is.numeric(eval(substitute(gWidget$x$data$a,list(a=x))))){
       eval(substitute(meta$a$type<-'cat',list(a=x)))
     }
   }
   if (!is.null(y)) {
-    switch (g$x$attrs$plotType,
+    switch (gWidget$x$attrs$plotType,
             stock ={
-              if(is.null(g$x$mapping$yField))
+              if(is.null(gWidget$x$mapping$yField))
                 {mapping$yField <- c('open', 'close', 'high', 'low')}
             },
             {
             mapping$yField <- y
-            if(is.numeric(eval(substitute(g$x$data$a,list(a=y))))){
+            if(is.numeric(eval(substitute(gWidget$x$data$a,list(a=y))))){
               eval(substitute(meta$a$type<-'cat',list(a=y)))
             }}
     )
     }
   if (!is.null(color)) {
-    if (color %in% colnames(g$x$data))
+    if (color %in% colnames(gWidget$x$data))
     {
       mapping$colorField <- color
-      mapping$color<-rainbow(length(unique(eval(substitute(g$x$data$a,list(a=color))))))
+      mapping$color<-rainbow(length(unique(eval(substitute(gWidget$x$data$a,list(a=color))))))
       # }
     }
     else {
@@ -55,7 +55,7 @@ aes <- function(g,
     }
   }
   if (!is.null(size)) {
-    if (size %in% colnames(g$x$data))
+    if (size %in% colnames(gWidget$x$data))
     {
       mapping$sizeField <- size
       mapping$size <- c(2, 30)
@@ -64,13 +64,13 @@ aes <- function(g,
       mapping$size <-size
     }
   }
-  if (attr(g, "class")[1] %in% c('line')) {
+  if (attr(gWidget, "class")[1] %in% c('line')) {
     mapping$seriesField <- group
   }
   #merge mapping
-  g$x$mapping <- mergeLists(g$x$mapping, mapping)
+  gWidget$x$mapping <- mergeLists(gWidget$x$mapping, mapping)
   #merge mapping
-  g$x$meta <- mergeLists(g$x$meta, meta)
+  gWidget$x$meta <- mergeLists(gWidget$x$meta, meta)
   #return g
-  g
+  gWidget
 }
