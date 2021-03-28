@@ -46,6 +46,7 @@ g(data,plot_type = 'pie') %>%pie(radius = 1 )%>%g2plot::aes(x='value',y='value',
 ![image](https://github.com/GOUYONGCHAO/g2plot/blob/master/public/image/stock.png)
 
 ## 任务清单 TODO
+### 基础图表
 - [x] Line：折线图
 - [x] Area：面积图
 - [ ] Column：柱状图
@@ -65,9 +66,20 @@ g(data,plot_type = 'pie') %>%pie(radius = 1 )%>%g2plot::aes(x='value',y='value',
 - [ ] RadialBar：玉珏图
 - [ ] Box：箱型图
 - [x] Stock：股票图
+### 图表组件
+- [x] Legend：图例
+- [x] xAxis：X轴
+- [x] yAxis：Y周
+- [ ] Slider：缩略轴
+- [ ] Scrollbar：滚动条
+- [ ] Label：数据标签
+- [x] Tooltip：悬浮提示
+- [x] Annotations：图表标注
+- [ ] ConversionTag：转化标签
 
 # 鸣谢
+> "If I have seen further, it is by standing on the shoulders of giants." --Isaac Newton
+> "如果说我看得比别人更远些，那是因为我站在巨人的肩膀上。"--艾萨克·牛顿
 
-感谢antv团队
-
-感谢Rstudio团队
+感谢antv团队的贡献
+感谢Rstudio团队的贡献
