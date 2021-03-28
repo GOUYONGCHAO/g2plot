@@ -30,7 +30,15 @@ HTMLWidgets.widget({
           size:mapping.size,
           seriesField:mapping.seriesField,
           meta:x.meta,
-
+          theme:x.theme,
+          label:x.label,
+          xAxis:x.xAxis,
+          yAxis:x.yAxis,
+          legend:x.legend,
+           // tooltip
+           tooltip:x.tooltip,
+            //annotations
+          annotations:x.annotations,
           });
         // render plot
         heatmapPlot.render();

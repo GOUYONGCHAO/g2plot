@@ -2,7 +2,7 @@
 % Please edit documentation in R/style.R
 \name{labelstyle}
 \alias{labelstyle}
-\title{Title}
+\title{label sytle function}
 \usage{
 labelstyle(
   type = NULL,
@@ -29,5 +29,5 @@ labelstyle(
 
 }
 \description{
-Title
+label sytle function
 }

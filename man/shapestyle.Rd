@@ -2,7 +2,7 @@
 % Please edit documentation in R/style.R
 \name{shapestyle}
 \alias{shapestyle}
-\title{Title}
+\title{shape style settings}
 \usage{
 shapestyle(
   fill = NULL,
@@ -28,5 +28,5 @@ shapestyle(
 
 }
 \description{
-Title
+shape style settings
 }

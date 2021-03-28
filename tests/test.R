@@ -8,8 +8,17 @@ g(data,plot_type = 'scatter') %>% aes(x = "Revenue (Millions)",y = "Rating",colo
 #line
 title<-title(text='this is title',offset = 100,spacing = 100,style = NULL,autoRotate = TRUE)
 data<-fromJSON('https://gw.alipayobjects.com/os/bmw-prod/55424a73-7cb8-4f79-b60d-3ab627ac5698.json')
-dt<-data[1:500,]
-g(dt) %>% line()%>% aes(x = "year",y = "value",group ='category')  %>% xAxis(position='bottom',tickMethod='cat',tickCount = 5,title = title)%>% yAxis(position='right',tickMethod='cat',tickCount = 10,title = title) %>%legend(position = 'right')
+dt<-data[1:1000,]
+g(dt) %>% line()%>% aes(x = "year",y = "value",group ='category')  %>%
+  xAxis(position='bottom',tickMethod='cat',tickCount = 5,title = title)%>%
+  yAxis(position='right',tickMethod='cat',tickCount = 10,title = title) %>%
+  legend(position = 'right') %>%
+  tooltip(fields = c('value','year'),shared = FALSE,title = 'value',showTitle = TRUE) %>%
+  annotations(type ='line',content = 'hi',position = c('1854','69'),start = c('min', 'median'),end = c('max', 'median')) %>%
+  annotations(type='regionFilter',start = c('min', 'median'),end=c('max', '0'),color='#F4664A')
+
+
+
 g(data,plot_type = 'line') %>% aes(x = "year",y = "value",group='category')
 g2r(data = dt)%>% line()%>% aes(x = "year",y = "value",group ='category')  %>% xAxis(position='bottom',tickMethod='cat',tickCount = 5,title = title)%>% yAxis(position='right',tickMethod='cat',tickCount = 10,title = title) %>%legend(position = 'right')
 

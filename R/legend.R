@@ -1,4 +1,4 @@
-#' Title Legend settings for g2plot
+#' Legend settings for g2plot
 #'
 #' @param gWidget object for g2plot
 #' @param layout layout for legend

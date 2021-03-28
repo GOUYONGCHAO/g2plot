@@ -1,6 +1,7 @@
 
 
-#' @param g
+#' Scatter plot
+#' @param gWidget
 #'
 #' @param mapping
 #' @param width

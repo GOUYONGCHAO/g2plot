@@ -40,7 +40,7 @@ g <-function(data,
       gx$data <- data
     }}
       else {
-    stop('data is null')
+      stop('data is null')
     }
     #constuct x
     gx$attrs <- list()

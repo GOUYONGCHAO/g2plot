@@ -30,5 +30,14 @@ mergeLists <- function (base_list, overlay_list, recursive = TRUE) {
     merged_list
   }
 }
-####
+# thanks for contributors of data.table
 
+#isTRUE for R which version < 3.5.0
+if (base::getRversion() < "3.5.0") {
+  isTRUE  <- function(x) is.logical(x) && length(x)==1L && !is.na(x) && x    # backport R's new implementation of isTRUE
+  isFALSE <- function(x) is.logical(x) && length(x)==1L && !is.na(x) && !x   # backport isFALSE that was added in R 3.5.0
+}
+# is TRUE or NA
+isTRUEorNA    <- function(x) is.logical(x) && length(x)==1L && (is.na(x) || x)
+# is TRUE or FALSE
+isTRUEorFALSE <- function(x) is.logical(x) && length(x)==1L && !is.na(x)

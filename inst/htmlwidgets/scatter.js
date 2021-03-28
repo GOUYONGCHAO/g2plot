@@ -29,10 +29,15 @@ HTMLWidgets.widget({
           sizeField:mapping.sizeField,
           size:mapping.size,
           shape:x.style.shape,
-          pointStyle: {
-          fillOpacity: 0.8,
-          strokeOpacity:0
-  },
+          theme:x.theme,
+          label:x.label,
+          xAxis:x.xAxis,
+          yAxis:x.yAxis,
+          legend:x.legend,
+           // tooltip
+           tooltip:x.tooltip,
+            //annotations
+          annotations:x.annotations,
           });
         // render plot
        scatterPlot.render();

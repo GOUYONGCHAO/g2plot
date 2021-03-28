@@ -2,7 +2,7 @@
 % Please edit documentation in R/legend.R
 \name{legend}
 \alias{legend}
-\title{Title Legend settings for g2plot}
+\title{Legend settings for g2plot}
 \usage{
 legend(
   gWidget,
@@ -48,7 +48,7 @@ legend(
 
 }
 \description{
-Title Legend settings for g2plot
+Legend settings for g2plot
 }
 \examples{
 data<-data.frame(type=c('分类1','分类2','分类3','分类4','分类5','其他'),value=c(1:6))

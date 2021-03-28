@@ -34,6 +34,10 @@ HTMLWidgets.widget({
           xAxis:x.xAxis,
           yAxis:x.yAxis,
           legend:x.legend,
+          // tooltip
+          tooltip:x.tooltip,
+          //annotations
+          annotations:x.annotations,
           });
         // render plot
        scatterPlot.render();

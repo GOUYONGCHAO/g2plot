@@ -27,24 +27,24 @@
 #' @param offset
 #' @param customContent
 #'
-#' @return
-#' @export tooltip
-#'
 #' @examples
+#' 
+#' @return
+#' @export 
 tooltip<-function(gWidget
                   ,title=NULL
-                  ,fields=NULL	               ##
-                  ,formatter=NULL	       ##
-                  ,follow	 =NULL     ##
-                  ,enterable=FALSE	       ##
-                  ,showTitle =NULL       ##
-                  ,position	=c("top","bottom","left","right")        ##
-                  ,shared =NULL    ##
-                  ,showCrosshairs   =NULL
+                  ,fields=c(NULL,NULL)	               
+                  ,formatter=NULL	      
+                  ,follow	 =TRUE     
+                  ,enterable=FALSE	       
+                  ,showTitle =NULL       
+                  ,position	=c("top","bottom","left","right")      
+                  ,shared =NULL  
+                  ,showCrosshairs   =FALSE
                   ,crosshairs	=NULL    ##
                   ,textStyle =NULL     ##
                   ,textBackgroundStyle	 =NULL
-                  ,showMarkers	 =NULL     #
+                  ,showMarkers	 =TRUE     #
                   ,marker	 =NULL     ##
                   ,showContent  =NULL    ##
                   ,container	 =NULL     ##
@@ -55,9 +55,32 @@ tooltip<-function(gWidget
                   ,customContent
 ){
   tooltip<-list()
+  
+  tooltip$fields=fields
+  #follow
+  if (!missing(follow) && isTRUEorFALSE(follow)) {
+     tooltip$follow <-follow
+  }
+  # enterable
+ if (!missing(enterable) && isTRUEorFALSE(enterable)) {
+     tooltip$enterable <-enterable
+  }
   #check position
   tooltip$position <-match.arg(position)
-  
+  # shared
+ if (!missing(shared) && isTRUEorFALSE(shared)){
+     tooltip$shared <-shared
+  }
+   # shared
+ if (!missing(showCrosshairs) && isTRU(showCrosshairs)) {
+    tooltip$showCrosshairs <-showCrosshairs
+    tooltip$crosshairs <-crosshairs
+  }
+  # showMarkers
+ if (!missing(showMarkers) && isTRUEorFALSE(showMarkers)) {
+     tooltip$showMarkers <-showMarkers
+  }
+
   gWidget$x$tooltip<-mergeLists(gWidget$x$tooltip,tooltip)
   #return g
   gWidget
