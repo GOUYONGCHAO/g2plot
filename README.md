@@ -79,7 +79,10 @@ g(data,plot_type = 'pie') %>%pie(radius = 1 )%>%g2plot::aes(x='value',y='value',
 
 # 鸣谢
 > "If I have seen further, it is by standing on the shoulders of giants." --Isaac Newton
+> 
 > "如果说我看得比别人更远些，那是因为我站在巨人的肩膀上。"--艾萨克·牛顿
+> 
 
 感谢antv团队的贡献
+
 感谢Rstudio团队的贡献
