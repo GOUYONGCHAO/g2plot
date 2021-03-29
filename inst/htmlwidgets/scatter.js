@@ -30,7 +30,10 @@ HTMLWidgets.widget({
           size:mapping.size,
           shape:x.style.shape,
           theme:x.theme,
-          label:x.label,
+          // label
+          label:{  formatter: (item) => {
+            return item[mapping.label]}
+                },
           xAxis:x.xAxis,
           yAxis:x.yAxis,
           legend:x.legend,

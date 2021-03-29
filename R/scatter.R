@@ -16,6 +16,7 @@ scatter <- function(
 ) {
 gWidget$width<-width
 gWidget$height<-height
+gWidget$x$attrs$plotType<-'scatter'
 style<-list()
 #shape default "circle"
 if(is.null(shape)){style$shape<-'circle'}

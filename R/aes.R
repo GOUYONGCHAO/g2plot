@@ -20,17 +20,19 @@ aes <- function(gWidget,
                 y=NULL,
                 color = NULL,
                 size = NULL,
-                shape = NULL,group = NULL
+                shape = NULL,
+                group = NULL,
+                label = NULL
                 ) {
   mapping <- list()
   meta<-list()
-  if (!is.null(x)) {
+  if (!missing(x)) {
     mapping$xField <- x
     if(is.numeric(eval(substitute(gWidget$x$data$a,list(a=x))))){
       eval(substitute(meta$a$type<-'cat',list(a=x)))
     }
   }
-  if (!is.null(y)) {
+  if (!missing(y)) {
     switch (gWidget$x$attrs$plotType,
            # stock
             stock ={
@@ -48,7 +50,7 @@ aes <- function(gWidget,
             }}
     )
     }
-  if (!is.null(color)) {
+  if (!missing(color)) {
     if (color %in% colnames(gWidget$x$data))
     {
       mapping$colorField <- color
@@ -59,7 +61,7 @@ aes <- function(gWidget,
       mapping$color <- color
     }
   }
-  if (!is.null(size)) {
+  if (!missing(size)) {
     if (size %in% colnames(gWidget$x$data))
     {
       mapping$sizeField <- size
@@ -69,12 +71,19 @@ aes <- function(gWidget,
       mapping$size <-size
     }
   }
+    # label
+  if(!missing(label)) {
+     if (label %in% colnames(gWidget$x$data))
+    {
+      mapping$label <- label
+    }  
+  }
   if (attr(gWidget, "class")[1] %in% c('line')) {
     mapping$seriesField <- group
   }
   #merge mapping
   gWidget$x$mapping <- mergeLists(gWidget$x$mapping, mapping)
-  #merge mapping
+  #merge meta
   gWidget$x$meta <- mergeLists(gWidget$x$meta, meta)
   #return gWidget
   gWidget
