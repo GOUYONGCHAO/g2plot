@@ -34,7 +34,10 @@ HTMLWidgets.widget({
           startAngle:x.style.startangle,
           endAngle:x.style.endangle,
           theme:x.theme,
-          label:x.label,
+          // label
+          label:{  formatter: (item) => {
+            return item[mapping.label]}
+                },
           xAxis:x.xAxis,
           yAxis:x.yAxis,
           legend:x.legend,
